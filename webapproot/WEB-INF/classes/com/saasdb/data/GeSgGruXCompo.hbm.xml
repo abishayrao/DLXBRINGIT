@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeSgGruXCompo" table="ge_sg_gru_x_compo" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesggxcid" type="integer">
+            <column name="gesggxcid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesggxcidcompo" type="integer">
+            <column name="gesggxcidcompo" not-null="true"/>
+        </property>
+        <property name="gesggxcacessa" type="string">
+            <column name="gesggxcacessa" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcinclui" type="string">
+            <column name="gesggxcinclui" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcexclui" type="string">
+            <column name="gesggxcexclui" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcaltera" type="string">
+            <column name="gesggxcaltera" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxctemcampos" type="string">
+            <column name="gesggxctemcampos" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="geSgGrupos" class="com.saasdb.data.GeSgGrupos">
+            <column name="gesggxcidgrp" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

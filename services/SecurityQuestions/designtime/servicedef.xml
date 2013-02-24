@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="SecurityQuestions" class="reset" CRUDService="false" type="JavaService" springFile="SecurityQuestions.spring.xml">
+    <operation name="Sa1">
+        <parameter name="in" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="int" isList="false"/>
+    </operation>
+    <operation name="Sa2">
+        <parameter name="in" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="int" isList="false"/>
+    </operation>
+    <operation name="Sq1">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="Sq2">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="connectDB">
+        <return typeRef="java.sql.Connection" isList="false"/>
+    </operation>
+    <operation name="encrypt">
+        <parameter name="plaintext" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="np">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="resetpassword">
+        <parameter name="epass" typeRef="java.lang.String" isList="false"/>
+        <parameter name="npass" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="sendEmail">
+        <return typeRef="java.lang.String" isList="false"/>
+    </operation>
+    <operation name="uname">
+        <parameter name="in" typeRef="java.lang.String" isList="false"/>
+        <return typeRef="int" isList="false"/>
+    </operation>
+    <dataobjects/>
+</service>

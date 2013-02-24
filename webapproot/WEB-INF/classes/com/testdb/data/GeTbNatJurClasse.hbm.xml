@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbNatJurClasse" table="ge_tb_nat_jur_classe" dynamic-insert="false" dynamic-update="false">
+        <id name="genajucid" type="integer">
+            <column name="GENAJUCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="genajuccod" type="string">
+            <column name="GENAJUCCOD" length="1" not-null="true"/>
+        </property>
+        <property name="genajucdescr" type="string">
+            <column name="GENAJUCDESCR" length="60" not-null="true"/>
+        </property>
+        <property name="genajucstatus" type="string">
+            <column name="GENAJUCSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="genajucinivig" type="date">
+            <column name="GENAJUCINIVIG" length="10"/>
+        </property>
+        <property name="genajucfimvig" type="date">
+            <column name="GENAJUCFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GENAJUCCLIID" not-null="true"/>
+        </many-to-one>
+        <set name="geTbNatJuridicas" inverse="true" cascade="">
+            <key>
+                <column name="GENATJUCLASSEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbNatJuridica"/>
+        </set>
+    </class>
+</hibernate-mapping>

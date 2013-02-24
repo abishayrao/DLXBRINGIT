@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiSisModTabCampos" table="si_sis_mod_tab_campos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sismtcid" type="integer">
+            <column name="sismtcid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sismtcnome" type="string">
+            <column name="sismtcnome" length="30" not-null="true"/>
+        </property>
+        <property name="sismtcatributo" type="string">
+            <column name="sismtcatributo" length="30"/>
+        </property>
+        <property name="sismtctipo" type="string">
+            <column name="sismtctipo" length="20" not-null="true"/>
+        </property>
+        <property name="sismtcnulo" type="string">
+            <column name="sismtcnulo" length="1" not-null="true"/>
+        </property>
+        <property name="sismtcpk" type="string">
+            <column name="sismtcpk" length="1" not-null="true"/>
+        </property>
+        <property name="sismtcfk" type="string">
+            <column name="sismtcfk" length="1" not-null="true"/>
+        </property>
+        <property name="sismtcuk" type="string">
+            <column name="sismtcuk" length="1" not-null="true"/>
+        </property>
+        <property name="sismtcdescricao" type="string">
+            <column name="sismtcdescricao" length="1000"/>
+        </property>
+        <many-to-one name="siSisModTabelas" class="com.postgresdb.data.SiSisModTabelas">
+            <column name="sismtcidtabela" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

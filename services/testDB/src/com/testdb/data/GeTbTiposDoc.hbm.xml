@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbTiposDoc" table="ge_tb_tipos_doc" dynamic-insert="false" dynamic-update="false">
+        <id name="getipodocid" type="integer">
+            <column name="GETIPODOCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipodoccod" type="string">
+            <column name="GETIPODOCCOD" length="5" not-null="true"/>
+        </property>
+        <property name="getipodocdescr" type="string">
+            <column name="GETIPODOCDESCR" length="50" not-null="true"/>
+        </property>
+        <property name="getipodocstatus" type="string">
+            <column name="GETIPODOCSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="getipodocinivig" type="date">
+            <column name="GETIPODOCINIVIG" length="10"/>
+        </property>
+        <property name="getipodocfimvig" type="date">
+            <column name="GETIPODOCFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GETIPODOCCLIID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

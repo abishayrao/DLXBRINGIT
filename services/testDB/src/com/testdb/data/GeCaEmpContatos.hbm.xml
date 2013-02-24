@@ -1,0 +1,105 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpContatos" table="ge_ca_emp_contatos" dynamic-insert="false" dynamic-update="false">
+        <id name="geempconid" type="integer">
+            <column name="GEEMPCONID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempconnomea" type="string">
+            <column name="GEEMPCONNOMEA" length="30" not-null="true"/>
+        </property>
+        <property name="geempconcargo" type="string">
+            <column name="GEEMPCONCARGO" length="30" not-null="true"/>
+        </property>
+        <property name="geempcondtnasc" type="date">
+            <column name="GEEMPCONDTNASC" length="10"/>
+        </property>
+        <property name="geempconsexo" type="string">
+            <column name="GEEMPCONSEXO" length="1"/>
+        </property>
+        <property name="geempconteladdd" type="string">
+            <column name="GEEMPCONTELADDD" length="6"/>
+        </property>
+        <property name="geempcontelano" type="string">
+            <column name="GEEMPCONTELANO" length="8"/>
+        </property>
+        <property name="geempcontelbddd" type="string">
+            <column name="GEEMPCONTELBDDD" length="6"/>
+        </property>
+        <property name="geempcontelbno" type="string">
+            <column name="GEEMPCONTELBNO" length="8"/>
+        </property>
+        <property name="geempconemail" type="string">
+            <column name="GEEMPCONEMAIL" length="50"/>
+        </property>
+        <property name="geempconresa" type="string">
+            <column name="GEEMPCONRESA" length="1"/>
+        </property>
+        <property name="geempconresb" type="string">
+            <column name="GEEMPCONRESB" length="1"/>
+        </property>
+        <property name="geempconresc" type="string">
+            <column name="GEEMPCONRESC" length="1"/>
+        </property>
+        <property name="geempconresd" type="string">
+            <column name="GEEMPCONRESD" length="1"/>
+        </property>
+        <property name="geempconrese" type="string">
+            <column name="GEEMPCONRESE" length="1"/>
+        </property>
+        <property name="geempconresf" type="string">
+            <column name="GEEMPCONRESF" length="1"/>
+        </property>
+        <property name="geempconresg" type="string">
+            <column name="GEEMPCONRESG" length="1"/>
+        </property>
+        <property name="geempconresh" type="string">
+            <column name="GEEMPCONRESH" length="1"/>
+        </property>
+        <property name="geempconresi" type="string">
+            <column name="GEEMPCONRESI" length="1"/>
+        </property>
+        <property name="geempconresj" type="string">
+            <column name="GEEMPCONRESJ" length="1"/>
+        </property>
+        <property name="geempconresk" type="string">
+            <column name="GEEMPCONRESK" length="1"/>
+        </property>
+        <property name="geempconresl" type="string">
+            <column name="GEEMPCONRESL" length="1"/>
+        </property>
+        <property name="geempconresm" type="string">
+            <column name="GEEMPCONRESM" length="1"/>
+        </property>
+        <property name="geempconresn" type="string">
+            <column name="GEEMPCONRESN" length="1"/>
+        </property>
+        <property name="geempconreso" type="string">
+            <column name="GEEMPCONRESO" length="1"/>
+        </property>
+        <property name="geempconstatus" type="string">
+            <column name="GEEMPCONSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geempconinivig" type="date">
+            <column name="GEEMPCONINIVIG" length="10"/>
+        </property>
+        <property name="geempconfimvig" type="date">
+            <column name="GEEMPCONFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="geTbTiposTelefoneByGeempcontelatpid" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="GEEMPCONTELATPID"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEEMPCOSEMPRESAID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefoneByGeempcontelbtpid" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="GEEMPCONTELBTPID"/>
+        </many-to-one>
+        <set name="geCaEmpContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPHCCONTATOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpContatosHist"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliHisPgto" table="si_cli_his_pgto" dynamic-insert="false" dynamic-update="false">
+        <id name="sichpid" type="integer">
+            <column name="SICHPID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sichpdtvenc" type="date">
+            <column name="SICHPDTVENC" length="10" not-null="true"/>
+        </property>
+        <property name="sichpvalapagar" type="float">
+            <column name="SICHPVALAPAGAR" precision="12" not-null="true"/>
+        </property>
+        <property name="sichpvaldesconto" type="float">
+            <column name="SICHPVALDESCONTO" precision="12"/>
+        </property>
+        <property name="sichpvalmulta" type="float">
+            <column name="SICHPVALMULTA" precision="12"/>
+        </property>
+        <property name="sichpdtpgto" type="date">
+            <column name="SICHPDTPGTO" length="10"/>
+        </property>
+        <property name="sichpvalpago" type="float">
+            <column name="SICHPVALPAGO" precision="12"/>
+        </property>
+        <property name="sichpstatus" type="string">
+            <column name="SICHPSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="sichpprotesto" type="string">
+            <column name="SICHPPROTESTO" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="SICHPIDCLIENTE" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

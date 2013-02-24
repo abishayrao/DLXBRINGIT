@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbIndexCota" table="ge_tb_index_cota" dynamic-insert="false" dynamic-update="false">
+        <id name="geindctid" type="integer">
+            <column name="GEINDCTID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geindctvalor" type="float">
+            <column name="GEINDCTVALOR" precision="12" not-null="true"/>
+        </property>
+        <property name="geindctstatus" type="string">
+            <column name="GEINDCTSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geindctinivig" type="date">
+            <column name="GEINDCTINIVIG" length="10"/>
+        </property>
+        <property name="geindctfimvig" type="date">
+            <column name="GEINDCTFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="geTbIndex" class="com.testdb.data.GeTbIndex">
+            <column name="GEINDCTIDINDEX" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

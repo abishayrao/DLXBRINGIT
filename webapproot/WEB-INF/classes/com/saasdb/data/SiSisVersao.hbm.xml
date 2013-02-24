@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiSisVersao" table="si_sis_versao" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="simveid" type="integer">
+            <column name="simveid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="simvecod" type="string">
+            <column name="simvecod" length="10" not-null="true"/>
+        </property>
+        <property name="simvestatus" type="string">
+            <column name="simvestatus" length="1" not-null="true"/>
+        </property>
+        <property name="simveinivig" type="date">
+            <column name="simveinivig" length="13"/>
+        </property>
+        <property name="simvefimvig" type="date">
+            <column name="simvefimvig" length="13"/>
+        </property>
+        <property name="simvedescricao" type="string">
+            <column name="simvedescricao"/>
+        </property>
+        <many-to-one name="siSistema" class="com.saasdb.data.SiSistema">
+            <column name="simveidsistema" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

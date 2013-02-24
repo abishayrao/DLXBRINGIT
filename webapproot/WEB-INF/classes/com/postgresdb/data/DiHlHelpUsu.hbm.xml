@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.DiHlHelpUsu" table="di_hl_help_usu" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="dihlhluid" type="integer">
+            <column name="dihlhluid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="dihlhludescr" type="string">
+            <column name="dihlhludescr"/>
+        </property>
+        <many-to-one name="geSgUsuarios" class="com.postgresdb.data.GeSgUsuarios">
+            <column name="dihlhluidusu" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siSisModComponentes" class="com.postgresdb.data.SiSisModComponentes">
+            <column name="dihlhluidcompo" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

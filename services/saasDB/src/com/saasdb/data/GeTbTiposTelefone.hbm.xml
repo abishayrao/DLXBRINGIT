@@ -1,0 +1,63 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbTiposTelefone" table="ge_tb_tipos_telefone" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipotelid" type="integer">
+            <column name="getipotelid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipotelcod" type="string">
+            <column name="getipotelcod" length="5" not-null="true"/>
+        </property>
+        <property name="getipoteldescr" type="string">
+            <column name="getipoteldescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipotelstatus" type="string">
+            <column name="getipotelstatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipotelinivig" type="date">
+            <column name="getipotelinivig" length="13"/>
+        </property>
+        <property name="getipotelfimvig" type="date">
+            <column name="getipotelfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="getipotelcliid" not-null="true"/>
+        </many-to-one>
+        <set name="siCliContatosesForSiclicontelatpid" inverse="true" cascade="">
+            <key>
+                <column name="siclicontelatpid"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContatos"/>
+        </set>
+        <set name="geCaEmpContatosesForGeempcontelatpid" inverse="true" cascade="">
+            <key>
+                <column name="geempcontelatpid"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContatos"/>
+        </set>
+        <set name="geCaEmpTels" inverse="true" cascade="">
+            <key>
+                <column name="geempteltipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpTel"/>
+        </set>
+        <set name="siCliTels" inverse="true" cascade="">
+            <key>
+                <column name="sicliteltipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliTel"/>
+        </set>
+        <set name="geCaEmpContatosesForGeempcontelbtpid" inverse="true" cascade="">
+            <key>
+                <column name="geempcontelbtpid"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContatos"/>
+        </set>
+        <set name="siCliContatosesForSiclicontelbtpid" inverse="true" cascade="">
+            <key>
+                <column name="siclicontelbtpid"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContatos"/>
+        </set>
+    </class>
+</hibernate-mapping>

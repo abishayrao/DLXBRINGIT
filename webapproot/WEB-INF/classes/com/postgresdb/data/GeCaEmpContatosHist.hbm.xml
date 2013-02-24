@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeCaEmpContatosHist" table="ge_ca_emp_contatos_hist" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geemphcid" type="integer">
+            <column name="geemphcid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemphcdata" type="date">
+            <column name="geemphcdata" length="13" not-null="true"/>
+        </property>
+        <property name="geemphchora" type="integer">
+            <column name="geemphchora" not-null="true"/>
+        </property>
+        <property name="geemphcatendente" type="string">
+            <column name="geemphcatendente" length="30"/>
+        </property>
+        <property name="geemphchistorico" type="string">
+            <column name="geemphchistorico" length="2000"/>
+        </property>
+        <property name="geemphcstatus" type="string">
+            <column name="geemphcstatus" length="1"/>
+        </property>
+        <many-to-one name="geTbTiposContato" class="com.postgresdb.data.GeTbTiposContato">
+            <column name="geemphctipoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpContatos" class="com.postgresdb.data.GeCaEmpContatos">
+            <column name="geemphccontatoid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

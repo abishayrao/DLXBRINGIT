@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiCliEnd" table="si_cli_end" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliendid" type="integer">
+            <column name="sicliendid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicliendlogra" type="string">
+            <column name="sicliendlogra" length="80"/>
+        </property>
+        <property name="sicliendno" type="string">
+            <column name="sicliendno" length="20"/>
+        </property>
+        <property name="sicliendcompl" type="string">
+            <column name="sicliendcompl" length="20"/>
+        </property>
+        <property name="sicliendbairro" type="string">
+            <column name="sicliendbairro" length="30"/>
+        </property>
+        <property name="sicliendmunic" type="string">
+            <column name="sicliendmunic" length="30"/>
+        </property>
+        <property name="sicliendcep" type="string">
+            <column name="sicliendcep" length="8"/>
+        </property>
+        <many-to-one name="geTbTiposEndereco" class="com.saasdb.data.GeTbTiposEndereco">
+            <column name="sicliendtipoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbUf" class="com.saasdb.data.GeTbUf">
+            <column name="siclienduf"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="sicliendclienteid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

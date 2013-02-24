@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeSgGruXCompo" table="ge_sg_gru_x_compo" dynamic-insert="false" dynamic-update="false">
+        <id name="gesggxcid" type="integer">
+            <column name="GESGGXCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesggxcidcompo" type="integer">
+            <column name="GESGGXCIDCompo" not-null="true"/>
+        </property>
+        <property name="gesggxcacessa" type="string">
+            <column name="GESGGXCAcessa" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcinclui" type="string">
+            <column name="GESGGXCInclui" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcexclui" type="string">
+            <column name="GESGGXCExclui" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxcaltera" type="string">
+            <column name="GESGGXCAltera" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxctemCampos" type="string">
+            <column name="GESGGXCTemCampos" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="geSgGrupos" class="com.testdb.data.GeSgGrupos">
+            <column name="GESGGXCIDGrp" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

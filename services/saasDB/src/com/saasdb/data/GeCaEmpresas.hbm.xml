@@ -1,0 +1,114 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpresas" table="ge_ca_empresas" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gecaempid" type="integer">
+            <column name="gecaempid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gecaemppfpj" type="string">
+            <column name="gecaemppfpj" length="1" not-null="true"/>
+        </property>
+        <property name="gecaempcod" type="string">
+            <column name="gecaempcod" length="14" not-null="true"/>
+        </property>
+        <property name="gecaempnomegr" type="string">
+            <column name="gecaempnomegr" length="80" not-null="true"/>
+        </property>
+        <property name="gecaempnomepq" type="string">
+            <column name="gecaempnomepq" length="40"/>
+        </property>
+        <property name="gecaempstatus" type="string">
+            <column name="gecaempstatus" length="1" not-null="true"/>
+        </property>
+        <property name="gecaempinivig" type="date">
+            <column name="gecaempinivig" length="13"/>
+        </property>
+        <property name="gecaempfimvig" type="date">
+            <column name="gecaempfimvig" length="13"/>
+        </property>
+        <property name="gecaempusafilial" type="string">
+            <column name="gecaempusafilial" length="1" not-null="true"/>
+        </property>
+        <property name="gecaempusacc" type="string">
+            <column name="gecaempusacc" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="geTbTiposEmpresas" class="com.saasdb.data.GeTbTiposEmpresas">
+            <column name="gecaemptipoid"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="gecaempcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpCentrocustos" inverse="true" cascade="">
+            <key>
+                <column name="geempccuempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpCentrocusto"/>
+        </set>
+        <set name="geCaEmpLotacaos" inverse="true" cascade="">
+            <key>
+                <column name="geemplotempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpLotacao"/>
+        </set>
+        <set name="geCaEmpContatoses" inverse="true" cascade="">
+            <key>
+                <column name="geempcosempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContatos"/>
+        </set>
+        <set name="geSgGruXEmpresas" inverse="true" cascade="">
+            <key>
+                <column name="gesggxeidempresa" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGruXEmpresa"/>
+        </set>
+        <set name="geCaEmpSocioses" inverse="true" cascade="">
+            <key>
+                <column name="geempsoidempresa" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpSocios"/>
+        </set>
+        <set name="geCaEmpEnds" inverse="true" cascade="">
+            <key>
+                <column name="geempendempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpEnd"/>
+        </set>
+        <set name="geCaEmpContratoses" inverse="true" cascade="">
+            <key>
+                <column name="geempcrempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContratos"/>
+        </set>
+        <set name="geCaEmpTels" inverse="true" cascade="">
+            <key>
+                <column name="geemptelempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpTel"/>
+        </set>
+        <set name="geCaEmpHisPgtos" inverse="true" cascade="">
+            <key>
+                <column name="geemphpidempresa" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpHisPgto"/>
+        </set>
+        <set name="geCaEmpCnaeSecs" inverse="true" cascade="">
+            <key>
+                <column name="geempcnsempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpCnaeSec"/>
+        </set>
+        <set name="geCaEmpContases" inverse="true" cascade="">
+            <key>
+                <column name="geempctsempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContas"/>
+        </set>
+        <set name="geCaEmpWebs" inverse="true" cascade="">
+            <key>
+                <column name="geempwebempresaid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpWeb"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeSgGruXCampo" table="ge_sg_gru_x_campo" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesggxaid" type="integer">
+            <column name="gesggxaid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesggxaidcampo" type="integer">
+            <column name="gesggxaidcampo" not-null="true"/>
+        </property>
+        <property name="gesggxavisib" type="string">
+            <column name="gesggxavisib" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxahabilit" type="string">
+            <column name="gesggxahabilit" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxaobrig" type="string">
+            <column name="gesggxaobrig" length="1" not-null="true"/>
+        </property>
+        <property name="gesggxatrilha" type="string">
+            <column name="gesggxatrilha" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="geSgGrupos" class="com.postgresdb.data.GeSgGrupos">
+            <column name="gesggxaidgrp" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

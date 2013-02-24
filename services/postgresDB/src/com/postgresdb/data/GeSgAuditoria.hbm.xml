@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeSgAuditoria" table="ge_sg_auditoria" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesgaudid" type="integer">
+            <column name="gesgaudid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesgaudcompoid" type="integer">
+            <column name="gesgaudcompoid" not-null="true"/>
+        </property>
+        <property name="gesgauddata" type="integer">
+            <column name="gesgauddata" not-null="true"/>
+        </property>
+        <property name="gesgaudacao" type="string">
+            <column name="gesgaudacao" length="1" not-null="true"/>
+        </property>
+        <property name="gesgaudchave" type="string">
+            <column name="gesgaudchave" length="40"/>
+        </property>
+        <property name="gesgaudinformacao" type="string">
+            <column name="gesgaudinformacao" length="200"/>
+        </property>
+        <many-to-one name="geSgUsuarios" class="com.postgresdb.data.GeSgUsuarios">
+            <column name="gesgaudusuid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

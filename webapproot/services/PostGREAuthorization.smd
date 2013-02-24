@@ -1,0 +1,47 @@
+{
+	"methods": [{
+		"name": "Authorized",
+		"operationType": null,
+		"parameters": [{
+			"name": "uname",
+			"type": "java.lang.String"
+		}, {
+			"name": "pass",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "Greet",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "PassChk",
+		"operationType": null,
+		"parameters": [{
+			"name": "in",
+			"type": "java.lang.String"
+		}],
+		"returnType": "int"
+	}, {
+		"name": "chkfailure",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "int"
+	}, {
+		"name": "connectDB",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.sql.Connection"
+	}, {
+		"name": "encrypt",
+		"operationType": null,
+		"parameters": [{
+			"name": "plaintext",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "PostGREAuthorization.json"
+}

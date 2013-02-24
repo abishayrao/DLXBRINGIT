@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbNatJuridica" table="ge_tb_nat_juridica" dynamic-insert="false" dynamic-update="false">
+        <id name="genatjuid" type="integer">
+            <column name="GENATJUID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="genatjucod" type="string">
+            <column name="GENATJUCOD" length="4" not-null="true"/>
+        </property>
+        <property name="genatjudescr" type="string">
+            <column name="GENATJUDESCR" length="60" not-null="true"/>
+        </property>
+        <property name="genajucstatus" type="string">
+            <column name="GENAJUCSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="genajucinivig" type="date">
+            <column name="GENAJUCINIVIG" length="10"/>
+        </property>
+        <property name="genajucfimvig" type="date">
+            <column name="GENAJUCFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="geTbNatJurClasse" class="com.testdb.data.GeTbNatJurClasse">
+            <column name="GENATJUCLASSEID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

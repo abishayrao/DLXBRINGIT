@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbCnaeClasse" table="ge_tb_cnae_classe" dynamic-insert="false" dynamic-update="false">
+        <id name="gecnaedcod" type="string">
+            <column name="GECNAEDCOD" length="5"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="gecnaednome" type="string">
+            <column name="GECNAEDNOME" length="100" not-null="true"/>
+        </property>
+        <many-to-one name="geTbCnaeGrupo" class="com.testdb.data.GeTbCnaeGrupo">
+            <column name="GECNAEDGRUPO" length="3" not-null="true"/>
+        </many-to-one>
+        <set name="geTbCnaeSubclasses" inverse="true" cascade="">
+            <key>
+                <column name="GECNAEECLASSE" length="5" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbCnaeSubclasse"/>
+        </set>
+    </class>
+</hibernate-mapping>

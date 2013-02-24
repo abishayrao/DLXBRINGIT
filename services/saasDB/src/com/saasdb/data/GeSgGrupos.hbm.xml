@@ -1,0 +1,54 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeSgGrupos" table="ge_sg_grupos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesggrpid" type="integer">
+            <column name="gesggrpid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesggrpnome" type="string">
+            <column name="gesggrpnome" length="60" not-null="true"/>
+        </property>
+        <property name="gesggrpstatus" type="string">
+            <column name="gesggrpstatus" length="1"/>
+        </property>
+        <property name="gesggrpinivig" type="date">
+            <column name="gesggrpinivig" length="13"/>
+        </property>
+        <property name="gesggrpfimvig" type="date">
+            <column name="gesggrpfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="gesggrpcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geSgGruXCampos" inverse="true" cascade="">
+            <key>
+                <column name="gesggxaidgrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGruXCampo"/>
+        </set>
+        <set name="geSgGruXCompos" inverse="true" cascade="">
+            <key>
+                <column name="gesggxcidgrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGruXCompo"/>
+        </set>
+        <set name="geSgUsuarioses" inverse="true" cascade="">
+            <key>
+                <column name="gesgusuidgrupo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgUsuarios"/>
+        </set>
+        <set name="geSgGruXEmpresas" inverse="true" cascade="">
+            <key>
+                <column name="gesggxeidgrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGruXEmpresa"/>
+        </set>
+        <set name="geSgGruXModuloses" inverse="true" cascade="">
+            <key>
+                <column name="gesggxmidgrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGruXModulos"/>
+        </set>
+    </class>
+</hibernate-mapping>

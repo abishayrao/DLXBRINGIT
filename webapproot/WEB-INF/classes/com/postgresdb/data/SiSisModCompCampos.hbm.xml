@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiSisModCompCampos" table="si_sis_mod_comp_campos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sismccid" type="integer">
+            <column name="sismccid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sismccnome" type="string">
+            <column name="sismccnome" length="60" not-null="true"/>
+        </property>
+        <property name="sismccseqtela" type="integer">
+            <column name="sismccseqtela"/>
+        </property>
+        <property name="sismccdescricao" type="string">
+            <column name="sismccdescricao" length="1000"/>
+        </property>
+        <many-to-one name="siSisModComponentes" class="com.postgresdb.data.SiSisModComponentes">
+            <column name="sismccidcompo" not-null="true"/>
+        </many-to-one>
+        <set name="siSisModCampoHelps" inverse="true" cascade="">
+            <key>
+                <column name="simcahidcampo" not-null="true"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.SiSisModCampoHelp"/>
+        </set>
+    </class>
+</hibernate-mapping>

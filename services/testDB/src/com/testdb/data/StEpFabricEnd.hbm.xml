@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.StEpFabricEnd" table="st_ep_fabric_end" dynamic-insert="false" dynamic-update="false">
+        <id name="stfaendid" type="integer">
+            <column name="STFAENDID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="stfaendlogra" type="string">
+            <column name="STFAENDLOGRA" length="80"/>
+        </property>
+        <property name="stfaendno" type="string">
+            <column name="STFAENDNO" length="20"/>
+        </property>
+        <property name="stfaendcompl" type="string">
+            <column name="STFAENDCOMPL" length="20"/>
+        </property>
+        <property name="stfaendbairro" type="string">
+            <column name="STFAENDBAIRRO" length="30"/>
+        </property>
+        <property name="stfaendmunic" type="string">
+            <column name="STFAENDMUNIC" length="30"/>
+        </property>
+        <property name="stfaendcep" type="string">
+            <column name="STFAENDCEP" length="8"/>
+        </property>
+        <many-to-one name="geTbUf" class="com.testdb.data.GeTbUf">
+            <column name="STFAENDUFID"/>
+        </many-to-one>
+        <many-to-one name="stEpFabricantes" class="com.testdb.data.StEpFabricantes">
+            <column name="STFAENDFABRICANTEID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposEndereco" class="com.testdb.data.GeTbTiposEndereco">
+            <column name="STFAENDTIPOID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

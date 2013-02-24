@@ -1,0 +1,60 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeSgUsuarios" table="ge_sg_usuarios" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesgusuid" type="integer">
+            <column name="gesgusuid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesgusulogin" type="string">
+            <column name="gesgusulogin" length="30" not-null="true"/>
+        </property>
+        <property name="gesgususenha" type="string">
+            <column name="gesgususenha" length="20" not-null="true"/>
+        </property>
+        <property name="gesgusuexpira" type="string">
+            <column name="gesgusuexpira" length="1"/>
+        </property>
+        <property name="gesgusudtsenha" type="date">
+            <column name="gesgusudtsenha" length="13"/>
+        </property>
+        <property name="gesgusufunid" type="integer">
+            <column name="gesgusufunid"/>
+        </property>
+        <property name="gesgusunome" type="string">
+            <column name="gesgusunome" length="60"/>
+        </property>
+        <property name="gesgusuadmin" type="string">
+            <column name="gesgusuadmin" length="1"/>
+        </property>
+        <property name="gesgusustatus" type="string">
+            <column name="gesgusustatus" length="1"/>
+        </property>
+        <property name="gesgusuinivig" type="date">
+            <column name="gesgusuinivig" length="13"/>
+        </property>
+        <property name="gesgusufimvig" type="date">
+            <column name="gesgusufimvig" length="13"/>
+        </property>
+        <many-to-one name="geSgGrupos" class="com.saasdb.data.GeSgGrupos">
+            <column name="gesgusuidgrupo" not-null="true"/>
+        </many-to-one>
+        <set name="geSgAuditorias" inverse="true" cascade="">
+            <key>
+                <column name="gesgaudusuid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgAuditoria"/>
+        </set>
+        <set name="diHlHelpUsus" inverse="true" cascade="">
+            <key>
+                <column name="dihlhluidusu" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.DiHlHelpUsu"/>
+        </set>
+        <set name="geSgHistSenhases" inverse="true" cascade="">
+            <key>
+                <column name="gesghsenhausuid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgHistSenhas"/>
+        </set>
+    </class>
+</hibernate-mapping>

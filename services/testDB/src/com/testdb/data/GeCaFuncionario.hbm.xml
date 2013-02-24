@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaFuncionario" table="ge_ca_funcionario" dynamic-insert="false" dynamic-update="false">
+        <id name="gefunciid" type="integer">
+            <column name="GEFUNCIID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gefuncimatricula" type="integer">
+            <column name="GEFUNCIMATRICULA" not-null="true"/>
+        </property>
+        <property name="gefuncidigito" type="integer">
+            <column name="GEFUNCIDIGITO"/>
+        </property>
+        <property name="gefuncinome" type="string">
+            <column name="GEFUNCINOME" length="30"/>
+        </property>
+        <property name="gefuncinomecomplet" type="string">
+            <column name="GEFUNCINOMECOMPLET" length="80" not-null="true"/>
+        </property>
+        <property name="gefuncistatus" type="string">
+            <column name="GEFUNCISTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="gefunciidmestre" type="string">
+            <column name="GEFUNCIIDMESTRE" length="80"/>
+        </property>
+        <property name="gefuncialteradomes" type="string">
+            <column name="GEFUNCIALTERADOMES" length="1"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEFUNCIEMPRESAID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

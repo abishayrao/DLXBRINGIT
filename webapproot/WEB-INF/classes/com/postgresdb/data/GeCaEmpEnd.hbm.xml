@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeCaEmpEnd" table="ge_ca_emp_end" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempendid" type="integer">
+            <column name="geempendid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempendlogra" type="string">
+            <column name="geempendlogra" length="80"/>
+        </property>
+        <property name="geempendno" type="string">
+            <column name="geempendno" length="20"/>
+        </property>
+        <property name="geempendcompl" type="string">
+            <column name="geempendcompl" length="20"/>
+        </property>
+        <property name="geempendbairro" type="string">
+            <column name="geempendbairro" length="40"/>
+        </property>
+        <property name="geempendmunic" type="string">
+            <column name="geempendmunic" length="40"/>
+        </property>
+        <property name="geempendcep" type="string">
+            <column name="geempendcep" length="8"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.postgresdb.data.GeCaEmpresas">
+            <column name="geempendempresaid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposEndereco" class="com.postgresdb.data.GeTbTiposEndereco">
+            <column name="geempendtipoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbUf" class="com.postgresdb.data.GeTbUf">
+            <column name="geempenduf"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

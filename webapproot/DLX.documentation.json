@@ -1,0 +1,12 @@
+{
+	"__metaData": {
+		"service_invalid_PostGREAuthorization": false, 
+		"service_invalid_Mail": false, 
+		"service_invalid_CurrentDate": true, 
+		"service_invalid_JSRegistration": true, 
+		"service_invalid_EmpList": true, 
+		"service_invalid_ForgotPassword": true, 
+		"service_invalid_SecurityQuestions": false, 
+		"service_invalid_PassEncryption": false
+	}
+}

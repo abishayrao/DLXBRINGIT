@@ -1,0 +1,87 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbUf" table="ge_tb_uf" dynamic-insert="false" dynamic-update="false">
+        <id name="geufcid" type="integer">
+            <column name="GEUFCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geufcod" type="string">
+            <column name="GEUFCOD" length="2" not-null="true"/>
+        </property>
+        <property name="geufnome" type="string">
+            <column name="GEUFNOME" length="60" not-null="true"/>
+        </property>
+        <property name="geufstatus" type="string">
+            <column name="GEUFSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geufinivig" type="date">
+            <column name="GEUFINIVIG" length="10"/>
+        </property>
+        <property name="geuffimvig" type="date">
+            <column name="GEUFFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GEUFCLIENTEID" not-null="true"/>
+        </many-to-one>
+        <set name="stEpFabricEnds" inverse="true" cascade="">
+            <key>
+                <column name="STFAENDUFID"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricEnd"/>
+        </set>
+        <set name="geCaEmpSociosesForGeempsorguf" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPSORGUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpSocios"/>
+        </set>
+        <set name="geCaEmpLotacaos" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPLOTUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpLotacao"/>
+        </set>
+        <set name="geCaEmpDocsPfsForGeempdpfregprofuf" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPDPFREGPROFUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpDocsPf"/>
+        </set>
+        <set name="siCliEnds" inverse="true" cascade="">
+            <key>
+                <column name="SICLIENDUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliEnd"/>
+        </set>
+        <set name="geCaEmpSociosesForGeempsouf" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPSOUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpSocios"/>
+        </set>
+        <set name="siCliDocsPfs" inverse="true" cascade="">
+            <key>
+                <column name="SICLIDPFRGUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliDocsPf"/>
+        </set>
+        <set name="geTbMunicipioses" inverse="true" cascade="">
+            <key>
+                <column name="GEMUNICUF" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbMunicipios"/>
+        </set>
+        <set name="geCaEmpDocsPfsForGeempdpfrguf" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPDPFRGUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpDocsPf"/>
+        </set>
+        <set name="geCaEmpEnds" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPENDUF"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpEnd"/>
+        </set>
+    </class>
+</hibernate-mapping>

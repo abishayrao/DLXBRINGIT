@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiSisModulo" table="si_sis_modulo" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="simodid" type="integer">
+            <column name="simodid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="simodcod" type="string">
+            <column name="simodcod" length="5" not-null="true"/>
+        </property>
+        <property name="simodnome" type="string">
+            <column name="simodnome" length="60" not-null="true"/>
+        </property>
+        <many-to-one name="siSistema" class="com.saasdb.data.SiSistema">
+            <column name="simodidsistema" not-null="true"/>
+        </many-to-one>
+        <set name="siSisModDescrDets" inverse="true" cascade="">
+            <key>
+                <column name="simoddidmodulo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiSisModDescrDet"/>
+        </set>
+        <set name="siCliModulos" inverse="true" cascade="">
+            <key>
+                <column name="sicxmidmodulo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliModulo"/>
+        </set>
+        <set name="siSisModTabelases" inverse="true" cascade="">
+            <key>
+                <column name="sismtidmodulo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiSisModTabelas"/>
+        </set>
+        <set name="siSisModComponenteses" inverse="true" cascade="">
+            <key>
+                <column name="sismcidmodulo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiSisModComponentes"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.StEpFabricantes" table="st_ep_fabricantes" dynamic-insert="false" dynamic-update="false">
+        <id name="stepfaid" type="integer">
+            <column name="STEPFAID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="stepfadoc" type="string">
+            <column name="STEPFADOC" length="14" not-null="true"/>
+        </property>
+        <property name="stepfanome" type="string">
+            <column name="STEPFANOME" length="80" not-null="true"/>
+        </property>
+        <property name="stepfaobs" type="string">
+            <column name="STEPFAOBS" length="1000"/>
+        </property>
+        <property name="stepfastatus" type="string">
+            <column name="STEPFASTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="stepfainivig" type="date">
+            <column name="STEPFAINIVIG" length="10"/>
+        </property>
+        <property name="stepfafimvig" type="date">
+            <column name="STEPFAFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="stEpCategFabr" class="com.testdb.data.StEpCategFabr">
+            <column name="STEPFACATEGORIAID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="STEPFACLIENTEID" not-null="true"/>
+        </many-to-one>
+        <set name="stEpFabricTels" inverse="true" cascade="">
+            <key>
+                <column name="STFATELFABRICANTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricTel"/>
+        </set>
+        <set name="stEpFabricContatoses" inverse="true" cascade="">
+            <key>
+                <column name="STFACONFABRICANTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricContatos"/>
+        </set>
+        <set name="stEpFabricWebs" inverse="true" cascade="">
+            <key>
+                <column name="STFAWEBFABRICANTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricWeb"/>
+        </set>
+        <set name="stEpFabricEnds" inverse="true" cascade="">
+            <key>
+                <column name="STFAENDFABRICANTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricEnd"/>
+        </set>
+    </class>
+</hibernate-mapping>

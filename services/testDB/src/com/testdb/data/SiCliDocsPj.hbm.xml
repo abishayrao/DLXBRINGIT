@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliDocsPj" table="si_cli_docs_pj" dynamic-insert="false" dynamic-update="false">
+        <id name="siclidpjclienteid" type="integer">
+            <column name="SICLIDPJCLIENTEID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="siclidpjcnpj" type="string">
+            <column name="SICLIDPJCNPJ" length="14" not-null="true"/>
+        </property>
+        <property name="siclidpjie" type="string">
+            <column name="SICLIDPJIE" length="20"/>
+        </property>
+        <property name="siclidpjiedata" type="date">
+            <column name="SICLIDPJIEDATA" length="10"/>
+        </property>
+        <property name="siclidpjim" type="string">
+            <column name="SICLIDPJIM" length="20"/>
+        </property>
+        <many-to-one
+            name="siClientes"
+            class="com.testdb.data.SiClientes"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="SICLIDPJCLIENTEID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

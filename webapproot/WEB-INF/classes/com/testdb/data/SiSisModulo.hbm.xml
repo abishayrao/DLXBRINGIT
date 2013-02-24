@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiSisModulo" table="si_sis_modulo" dynamic-insert="false" dynamic-update="false">
+        <id name="simodid" type="integer">
+            <column name="SIMODID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="simodcod" type="string">
+            <column name="SIMODCOD" length="5" not-null="true"/>
+        </property>
+        <property name="simodnome" type="string">
+            <column name="SIMODNOME" length="60" not-null="true"/>
+        </property>
+        <many-to-one name="siSistema" class="com.testdb.data.SiSistema">
+            <column name="SIMODIDSISTEMA" not-null="true"/>
+        </many-to-one>
+        <set name="siSisModDescrDets" inverse="true" cascade="">
+            <key>
+                <column name="SIMODDIDMODULO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModDescrDet"/>
+        </set>
+        <set name="siSisModComponenteses" inverse="true" cascade="">
+            <key>
+                <column name="SISMCIDMODULO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModComponentes"/>
+        </set>
+        <set name="siCliModulos" inverse="true" cascade="">
+            <key>
+                <column name="SICXMIDMODULO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliModulo"/>
+        </set>
+        <set name="siSisModTabelases" inverse="true" cascade="">
+            <key>
+                <column name="SISMTIDMODULO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModTabelas"/>
+        </set>
+    </class>
+</hibernate-mapping>

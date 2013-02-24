@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiCliWeb" table="si_cli_web" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliwebid" type="integer">
+            <column name="sicliwebid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicliwebtxt" type="string">
+            <column name="sicliwebtxt" length="60"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="sicliwebclienteid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposWeb" class="com.postgresdb.data.GeTbTiposWeb">
+            <column name="sicliwebtipoid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

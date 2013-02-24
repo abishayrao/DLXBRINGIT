@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpContatosHist" table="ge_ca_emp_contatos_hist" dynamic-insert="false" dynamic-update="false">
+        <id name="geemphcid" type="integer">
+            <column name="GEEMPHCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemphcdata" type="date">
+            <column name="GEEMPHCDATA" length="10" not-null="true"/>
+        </property>
+        <property name="geemphchora" type="time">
+            <column name="GEEMPHCHORA" length="8" not-null="true"/>
+        </property>
+        <property name="geemphcatendente" type="string">
+            <column name="GEEMPHCATENDENTE" length="30"/>
+        </property>
+        <property name="geemphchistorico" type="string">
+            <column name="GEEMPHCHISTORICO" length="2000"/>
+        </property>
+        <property name="geemphcstatus" type="string">
+            <column name="GEEMPHCSTATUS" length="1"/>
+        </property>
+        <many-to-one name="geTbTiposContato" class="com.testdb.data.GeTbTiposContato">
+            <column name="GEEMPHCTIPOID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpContatos" class="com.testdb.data.GeCaEmpContatos">
+            <column name="GEEMPHCCONTATOID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

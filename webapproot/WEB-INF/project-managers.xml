@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://schema.cloudfoundry.org/spring http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.8.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:cloud="http://schema.cloudfoundry.org/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean class="com.wavemaker.runtime.service.TypeManager" parent="typeManagerBase" scope="singleton" id="typeManager">
+        <property name="types">
+            <map merge="true">
+                <entry key="PostGREAuthorization">
+                    <list>
+                        <value>java.sql.Connection</value>
+                    </list>
+                </entry>
+                <entry key="SecurityQuestions">
+                    <list/>
+                </entry>
+                <entry key="testDB">
+                    <list>
+                        <value>com.testdb.data.DiHlHelpUsu</value>
+                        <value>com.testdb.data.GeCaEmpCentrocusto</value>
+                        <value>com.testdb.data.GeCaEmpCnaeSec</value>
+                        <value>com.testdb.data.GeCaEmpContas</value>
+                        <value>com.testdb.data.GeCaEmpContatos</value>
+                        <value>com.testdb.data.GeCaEmpContatosHist</value>
+                        <value>com.testdb.data.GeCaEmpDocsPf</value>
+                        <value>com.testdb.data.GeCaEmpDocsPj</value>
+                        <value>com.testdb.data.GeCaEmpEnd</value>
+                        <value>com.testdb.data.GeCaEmpHisPgto</value>
+                        <value>com.testdb.data.GeCaEmpLotacao</value>
+                        <value>com.testdb.data.GeCaEmpSocios</value>
+                        <value>com.testdb.data.GeCaEmpTel</value>
+                        <value>com.testdb.data.GeCaEmpWeb</value>
+                        <value>com.testdb.data.GeCaEmpresas</value>
+                        <value>com.testdb.data.GeCaFuncionario</value>
+                        <value>com.testdb.data.GeSgAuditoria</value>
+                        <value>com.testdb.data.GeSgGruXCampo</value>
+                        <value>com.testdb.data.GeSgGruXCompo</value>
+                        <value>com.testdb.data.GeSgGruXEmpresa</value>
+                        <value>com.testdb.data.GeSgGruXModulos</value>
+                        <value>com.testdb.data.GeSgGrupos</value>
+                        <value>com.testdb.data.GeSgHistSenhas</value>
+                        <value>com.testdb.data.GeSgUsuarios</value>
+                        <value>com.testdb.data.GeTbBancos</value>
+                        <value>com.testdb.data.GeTbBcAgencias</value>
+                        <value>com.testdb.data.GeTbCnaeClasse</value>
+                        <value>com.testdb.data.GeTbCnaeDivisao</value>
+                        <value>com.testdb.data.GeTbCnaeGrupo</value>
+                        <value>com.testdb.data.GeTbCnaeSecao</value>
+                        <value>com.testdb.data.GeTbCnaeSubclasse</value>
+                        <value>com.testdb.data.GeTbIndex</value>
+                        <value>com.testdb.data.GeTbIndexCota</value>
+                        <value>com.testdb.data.GeTbMeiosConhecimento</value>
+                        <value>com.testdb.data.GeTbMunicipios</value>
+                        <value>com.testdb.data.GeTbNatJurClasse</value>
+                        <value>com.testdb.data.GeTbNatJuridica</value>
+                        <value>com.testdb.data.GeTbQualificacaoSoc</value>
+                        <value>com.testdb.data.GeTbTiposConta</value>
+                        <value>com.testdb.data.GeTbTiposContato</value>
+                        <value>com.testdb.data.GeTbTiposContrato</value>
+                        <value>com.testdb.data.GeTbTiposDoc</value>
+                        <value>com.testdb.data.GeTbTiposEmpresas</value>
+                        <value>com.testdb.data.GeTbTiposEndereco</value>
+                        <value>com.testdb.data.GeTbTiposTelefone</value>
+                        <value>com.testdb.data.GeTbTiposWeb</value>
+                        <value>com.testdb.data.GeTbUf</value>
+                        <value>com.testdb.data.Selectionandordering</value>
+                        <value>com.testdb.data.SiCliContas</value>
+                        <value>com.testdb.data.SiCliContatos</value>
+                        <value>com.testdb.data.SiCliContatosHist</value>
+                        <value>com.testdb.data.SiCliDocsPf</value>
+                        <value>com.testdb.data.SiCliDocsPj</value>
+                        <value>com.testdb.data.SiCliEnd</value>
+                        <value>com.testdb.data.SiCliHisPgto</value>
+                        <value>com.testdb.data.SiCliModulo</value>
+                        <value>com.testdb.data.SiCliTel</value>
+                        <value>com.testdb.data.SiCliValores</value>
+                        <value>com.testdb.data.SiCliWeb</value>
+                        <value>com.testdb.data.SiClientes</value>
+                        <value>com.testdb.data.SiProduto</value>
+                        <value>com.testdb.data.SiSisModCampoHelp</value>
+                        <value>com.testdb.data.SiSisModCompCampos</value>
+                        <value>com.testdb.data.SiSisModCompoHelp</value>
+                        <value>com.testdb.data.SiSisModComponentes</value>
+                        <value>com.testdb.data.SiSisModDescrDet</value>
+                        <value>com.testdb.data.SiSisModTabCampos</value>
+                        <value>com.testdb.data.SiSisModTabIndex</value>
+                        <value>com.testdb.data.SiSisModTabelas</value>
+                        <value>com.testdb.data.SiSisModulo</value>
+                        <value>com.testdb.data.SiSisVerComponentes</value>
+                        <value>com.testdb.data.SiSisVersao</value>
+                        <value>com.testdb.data.SiSistema</value>
+                        <value>com.testdb.data.StEpCategFabr</value>
+                        <value>com.testdb.data.StEpFabricContatos</value>
+                        <value>com.testdb.data.StEpFabricEnd</value>
+                        <value>com.testdb.data.StEpFabricTel</value>
+                        <value>com.testdb.data.StEpFabricWeb</value>
+                        <value>com.testdb.data.StEpFabricantes</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

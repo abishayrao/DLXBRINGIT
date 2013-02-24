@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiSisModTabIndex" table="si_sis_mod_tab_index" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sismtiid" type="integer">
+            <column name="sismtiid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sismtinome" type="string">
+            <column name="sismtinome" length="30" not-null="true"/>
+        </property>
+        <property name="sismtidescricao" type="string">
+            <column name="sismtidescricao" length="1000"/>
+        </property>
+        <many-to-one name="siSisModTabelas" class="com.saasdb.data.SiSisModTabelas">
+            <column name="sismtiidtabela" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

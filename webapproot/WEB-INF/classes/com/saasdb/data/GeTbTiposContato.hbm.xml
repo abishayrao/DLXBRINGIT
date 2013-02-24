@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbTiposContato" table="ge_tb_tipos_contato" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoctoid" type="integer">
+            <column name="getipoctoid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoctocod" type="string">
+            <column name="getipoctocod" length="5" not-null="true"/>
+        </property>
+        <property name="getipoctodescr" type="string">
+            <column name="getipoctodescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipoctostatus" type="string">
+            <column name="getipoctostatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipoctoinivig" type="date">
+            <column name="getipoctoinivig" length="13"/>
+        </property>
+        <property name="getipoctofimvig" type="date">
+            <column name="getipoctofimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="getipoctocliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="geemphctipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContatosHist"/>
+        </set>
+        <set name="siCliContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="siclihctipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContatosHist"/>
+        </set>
+    </class>
+</hibernate-mapping>

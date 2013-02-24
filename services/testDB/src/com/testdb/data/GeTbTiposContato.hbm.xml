@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbTiposContato" table="ge_tb_tipos_contato" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoctoid" type="integer">
+            <column name="GETIPOCTOID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoctocod" type="string">
+            <column name="GETIPOCTOCOD" length="5" not-null="true"/>
+        </property>
+        <property name="getipoctodescr" type="string">
+            <column name="GETIPOCTODESCR" length="50" not-null="true"/>
+        </property>
+        <property name="getipoctostatus" type="string">
+            <column name="GETIPOCTOSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="getipoctoinivig" type="date">
+            <column name="GETIPOCTOINIVIG" length="10"/>
+        </property>
+        <property name="getipoctofimvig" type="date">
+            <column name="GETIPOCTOFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GETIPOCTOCLIID" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPHCTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpContatosHist"/>
+        </set>
+        <set name="siCliContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="SICLIHCTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliContatosHist"/>
+        </set>
+    </class>
+</hibernate-mapping>

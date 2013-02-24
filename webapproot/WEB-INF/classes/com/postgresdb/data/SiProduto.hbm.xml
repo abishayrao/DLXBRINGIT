@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiProduto" table="si_produto" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siproid" type="integer">
+            <column name="siproid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siprocod" type="string">
+            <column name="siprocod" length="5" not-null="true"/>
+        </property>
+        <property name="sipronome" type="string">
+            <column name="sipronome" length="80" not-null="true"/>
+        </property>
+        <property name="siprodescr" type="string">
+            <column name="siprodescr" length="500"/>
+        </property>
+        <property name="siprodstatus" type="string">
+            <column name="siprodstatus" length="1" not-null="true"/>
+        </property>
+        <property name="siprodinivig" type="date">
+            <column name="siprodinivig" length="13"/>
+        </property>
+        <property name="siprodfimvig" type="date">
+            <column name="siprodfimvig" length="13"/>
+        </property>
+        <set name="siSistemas" inverse="true" cascade="">
+            <key>
+                <column name="sisisprodid" not-null="true"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.SiSistema"/>
+        </set>
+    </class>
+</hibernate-mapping>

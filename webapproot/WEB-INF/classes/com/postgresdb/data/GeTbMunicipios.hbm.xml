@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbMunicipios" table="ge_tb_municipios" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gemunicid" type="integer">
+            <column name="gemunicid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gemuniccod" type="string">
+            <column name="gemuniccod" length="7" not-null="true"/>
+        </property>
+        <property name="gemunicnome" type="string">
+            <column name="gemunicnome" length="60" not-null="true"/>
+        </property>
+        <property name="gemunicstatus" type="string">
+            <column name="gemunicstatus" length="1" not-null="true"/>
+        </property>
+        <property name="gemunicinivig" type="date">
+            <column name="gemunicinivig" length="13"/>
+        </property>
+        <property name="gemunicfimvig" type="date">
+            <column name="gemunicfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="gemunicclienteid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbUf" class="com.postgresdb.data.GeTbUf">
+            <column name="gemunicuf" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

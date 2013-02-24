@@ -1,0 +1,73 @@
+{
+	"methods": [{
+		"name": "Sa1",
+		"operationType": null,
+		"parameters": [{
+			"name": "in",
+			"type": "java.lang.String"
+		}],
+		"returnType": "int"
+	}, {
+		"name": "Sa2",
+		"operationType": null,
+		"parameters": [{
+			"name": "in",
+			"type": "java.lang.String"
+		}],
+		"returnType": "int"
+	}, {
+		"name": "Sq1",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "Sq2",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "connectDB",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.sql.Connection"
+	}, {
+		"name": "encrypt",
+		"operationType": null,
+		"parameters": [{
+			"name": "plaintext",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "np",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "resetpassword",
+		"operationType": null,
+		"parameters": [{
+			"name": "epass",
+			"type": "java.lang.String"
+		}, {
+			"name": "npass",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "sendEmail",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "uname",
+		"operationType": null,
+		"parameters": [{
+			"name": "in",
+			"type": "java.lang.String"
+		}],
+		"returnType": "int"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "SecurityQuestions.json"
+}

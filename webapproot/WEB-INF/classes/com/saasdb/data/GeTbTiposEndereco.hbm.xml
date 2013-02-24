@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbTiposEndereco" table="ge_tb_tipos_endereco" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoendid" type="integer">
+            <column name="getipoendid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoendcod" type="string">
+            <column name="getipoendcod" length="5" not-null="true"/>
+        </property>
+        <property name="getipoenddescr" type="string">
+            <column name="getipoenddescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipoendstatus" type="string">
+            <column name="getipoendstatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipoendinivig" type="date">
+            <column name="getipoendinivig" length="13"/>
+        </property>
+        <property name="getipoendfimvig" type="date">
+            <column name="getipoendfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="getipoendcliid" not-null="true"/>
+        </many-to-one>
+        <set name="siCliEnds" inverse="true" cascade="">
+            <key>
+                <column name="sicliendtipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliEnd"/>
+        </set>
+        <set name="geCaEmpEnds" inverse="true" cascade="">
+            <key>
+                <column name="geempendtipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpEnd"/>
+        </set>
+    </class>
+</hibernate-mapping>

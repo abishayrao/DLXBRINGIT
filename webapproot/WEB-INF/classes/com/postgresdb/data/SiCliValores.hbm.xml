@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiCliValores" table="si_cli_valores" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sicvaid" type="integer">
+            <column name="sicvaid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicvatipocli" type="string">
+            <column name="sicvatipocli" length="1" not-null="true"/>
+        </property>
+        <property name="sicvanoempgrp" type="integer">
+            <column name="sicvanoempgrp"/>
+        </property>
+        <property name="sicvanousuarios" type="integer">
+            <column name="sicvanousuarios"/>
+        </property>
+        <property name="sicvanofundep" type="integer">
+            <column name="sicvanofundep"/>
+        </property>
+        <property name="sicvatipocobranc" type="string">
+            <column name="sicvatipocobranc" length="1" not-null="true"/>
+        </property>
+        <property name="sicvavalor" type="integer">
+            <column name="sicvavalor"/>
+        </property>
+        <property name="sicvastatus" type="string">
+            <column name="sicvastatus" length="1" not-null="true"/>
+        </property>
+        <property name="sicvainivig" type="date">
+            <column name="sicvainivig" length="13"/>
+        </property>
+        <property name="sicvafimvig" type="date">
+            <column name="sicvafimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="sicvaidcliente" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

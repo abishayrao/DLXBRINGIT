@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbIndex" table="ge_tb_index" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geindexid" type="integer">
+            <column name="geindexid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geindexcod" type="string">
+            <column name="geindexcod" length="5" not-null="true"/>
+        </property>
+        <property name="geindexdescr" type="string">
+            <column name="geindexdescr" length="50" not-null="true"/>
+        </property>
+        <property name="geindexperiodo" type="string">
+            <column name="geindexperiodo" length="1" not-null="true"/>
+        </property>
+        <property name="geindexstatus" type="string">
+            <column name="geindexstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geindexinivig" type="date">
+            <column name="geindexinivig" length="13"/>
+        </property>
+        <property name="geindexfimvig" type="date">
+            <column name="geindexfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="geindexcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geTbIndexCotas" inverse="true" cascade="">
+            <key>
+                <column name="geindctidindex" not-null="true"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeTbIndexCota"/>
+        </set>
+    </class>
+</hibernate-mapping>

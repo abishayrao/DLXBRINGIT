@@ -1,0 +1,81 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpLotacao" table="ge_ca_emp_lotacao" dynamic-insert="false" dynamic-update="false">
+        <id name="geemplotid" type="integer">
+            <column name="GEEMPLOTID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemplotcodigo" type="string">
+            <column name="GEEMPLOTCODIGO" length="30" not-null="true"/>
+        </property>
+        <property name="geemplotnome" type="string">
+            <column name="GEEMPLOTNOME" length="80" not-null="true"/>
+        </property>
+        <property name="geemplotnomeabre" type="string">
+            <column name="GEEMPLOTNOMEABRE" length="40"/>
+        </property>
+        <property name="geemplottipo" type="string">
+            <column name="GEEMPLOTTIPO" length="1" not-null="true"/>
+        </property>
+        <property name="geemplotnivelHie" type="string">
+            <column name="GEEMPLOTNivelHie" length="40"/>
+        </property>
+        <property name="geemplottipodoc" type="string">
+            <column name="GEEMPLOTTIPODOC" length="1" not-null="true"/>
+        </property>
+        <property name="geemplotdoc" type="string">
+            <column name="GEEMPLOTDOC" length="14" not-null="true"/>
+        </property>
+        <property name="geemplotie" type="string">
+            <column name="GEEMPLOTIE" length="20"/>
+        </property>
+        <property name="geemplotiedata" type="date">
+            <column name="GEEMPLOTIEDATA" length="10"/>
+        </property>
+        <property name="geemplotim" type="string">
+            <column name="GEEMPLOTIM" length="20"/>
+        </property>
+        <property name="geemplotimdata" type="date">
+            <column name="GEEMPLOTIMDATA" length="10"/>
+        </property>
+        <property name="geemplotnatjurid" type="string">
+            <column name="GEEMPLOTNATJURID" length="4"/>
+        </property>
+        <property name="geemplotlogra" type="string">
+            <column name="GEEMPLOTLOGRA" length="80"/>
+        </property>
+        <property name="geemplotno" type="string">
+            <column name="GEEMPLOTNO" length="20"/>
+        </property>
+        <property name="geemplotcompl" type="string">
+            <column name="GEEMPLOTCOMPL" length="20"/>
+        </property>
+        <property name="geemplotbairro" type="string">
+            <column name="GEEMPLOTBAIRRO" length="40"/>
+        </property>
+        <property name="geemplotmunic" type="string">
+            <column name="GEEMPLOTMUNIC" length="40"/>
+        </property>
+        <property name="geemplotcep" type="string">
+            <column name="GEEMPLOTCEP" length="8"/>
+        </property>
+        <property name="geemplotstatus" type="string">
+            <column name="GEEMPLOTSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geemplotvigdesde" type="date">
+            <column name="GEEMPLOTVIGDESDE" length="10"/>
+        </property>
+        <property name="geemplotvigate" type="date">
+            <column name="GEEMPLOTVIGATE" length="10"/>
+        </property>
+        <many-to-one name="geTbUf" class="com.testdb.data.GeTbUf">
+            <column name="GEEMPLOTUF"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEEMPLOTEMPRESAID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbCnaeSubclasse" class="com.testdb.data.GeTbCnaeSubclasse">
+            <column name="GEEMPLOTCNAEID" length="7"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliContas" table="si_cli_contas" dynamic-insert="false" dynamic-update="false">
+        <id name="siclictsid" type="integer">
+            <column name="SICLICTSID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclictsagencia" type="string">
+            <column name="SICLICTSAGENCIA" length="5" not-null="true"/>
+        </property>
+        <property name="siclictsagdv" type="string">
+            <column name="SICLICTSAGDV" length="1"/>
+        </property>
+        <property name="siclictsconta" type="string">
+            <column name="SICLICTSCONTA" length="10"/>
+        </property>
+        <property name="siclictsctdv" type="string">
+            <column name="SICLICTSCTDV" length="1"/>
+        </property>
+        <property name="siclictsstatus" type="string">
+            <column name="SICLICTSSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="siclictsinivig" type="date">
+            <column name="SICLICTSINIVIG" length="10"/>
+        </property>
+        <property name="siclictsfimvig" type="date">
+            <column name="SICLICTSFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="geTbBancos" class="com.testdb.data.GeTbBancos">
+            <column name="SICLICTSBANCOID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="SICLICTSCLIENTEID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposConta" class="com.testdb.data.GeTbTiposConta">
+            <column name="SICLICTSTIPO" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

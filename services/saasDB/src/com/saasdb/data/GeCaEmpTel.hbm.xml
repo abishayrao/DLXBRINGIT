@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpTel" table="ge_ca_emp_tel" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geemptelid" type="integer">
+            <column name="geemptelid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemptelddd" type="string">
+            <column name="geemptelddd" length="6"/>
+        </property>
+        <property name="geemptelno" type="string">
+            <column name="geemptelno" length="8" not-null="true"/>
+        </property>
+        <property name="geemptelramal" type="string">
+            <column name="geemptelramal" length="50"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.saasdb.data.GeCaEmpresas">
+            <column name="geemptelempresaid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefone" class="com.saasdb.data.GeTbTiposTelefone">
+            <column name="geempteltipoid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

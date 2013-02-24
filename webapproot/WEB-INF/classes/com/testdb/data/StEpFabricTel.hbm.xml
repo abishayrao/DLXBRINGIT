@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.StEpFabricTel" table="st_ep_fabric_tel" dynamic-insert="false" dynamic-update="false">
+        <id name="stfatelid" type="integer">
+            <column name="STFATELID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="stfatelddd" type="string">
+            <column name="STFATELDDD" length="4"/>
+        </property>
+        <property name="stfatelno" type="string">
+            <column name="STFATELNO" length="8" not-null="true"/>
+        </property>
+        <property name="stfatelramal" type="string">
+            <column name="STFATELRAMAL" length="50"/>
+        </property>
+        <many-to-one name="geTbTiposTelefone" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="STFATELTIPOID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="stEpFabricantes" class="com.testdb.data.StEpFabricantes">
+            <column name="STFATELFABRICANTEID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

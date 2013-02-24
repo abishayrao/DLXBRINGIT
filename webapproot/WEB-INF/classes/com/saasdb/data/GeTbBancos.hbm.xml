@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbBancos" table="ge_tb_bancos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gebancoid" type="integer">
+            <column name="gebancoid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gebancocod" type="string">
+            <column name="gebancocod" length="5" not-null="true"/>
+        </property>
+        <property name="gebanconome" type="string">
+            <column name="gebanconome" length="80" not-null="true"/>
+        </property>
+        <property name="gebancostatus" type="string">
+            <column name="gebancostatus" length="1" not-null="true"/>
+        </property>
+        <property name="gebancoinivig" type="date">
+            <column name="gebancoinivig" length="13"/>
+        </property>
+        <property name="gebancofimvig" type="date">
+            <column name="gebancofimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="gebancoclienteid" not-null="true"/>
+        </many-to-one>
+        <set name="geTbBcAgenciases" inverse="true" cascade="">
+            <key>
+                <column name="geagbancoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbBcAgencias"/>
+        </set>
+        <set name="siCliContases" inverse="true" cascade="">
+            <key>
+                <column name="siclictsbancoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContas"/>
+        </set>
+        <set name="geCaEmpContases" inverse="true" cascade="">
+            <key>
+                <column name="geempctsbancoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContas"/>
+        </set>
+    </class>
+</hibernate-mapping>

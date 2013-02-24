@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbTiposConta" table="ge_tb_tipos_conta" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoconid" type="integer">
+            <column name="getipoconid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoconcod" type="string">
+            <column name="getipoconcod" length="5" not-null="true"/>
+        </property>
+        <property name="getipocondescr" type="string">
+            <column name="getipocondescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipoconstatus" type="string">
+            <column name="getipoconstatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipoconinivig" type="date">
+            <column name="getipoconinivig" length="13"/>
+        </property>
+        <property name="getipoconfimvig" type="date">
+            <column name="getipoconfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="getipoconcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpContases" inverse="true" cascade="">
+            <key>
+                <column name="geempctstipo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContas"/>
+        </set>
+        <set name="siCliContases" inverse="true" cascade="">
+            <key>
+                <column name="siclictstipo" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContas"/>
+        </set>
+    </class>
+</hibernate-mapping>

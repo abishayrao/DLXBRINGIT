@@ -1,0 +1,207 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiClientes" table="si_clientes" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliid" type="integer">
+            <column name="SICLIID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclipfpj" type="string">
+            <column name="SICLIPFPJ" length="1" not-null="true"/>
+        </property>
+        <property name="siclicod" type="string">
+            <column name="SICLICOD" length="14" not-null="true"/>
+        </property>
+        <property name="siclinomegr" type="string">
+            <column name="SICLINOMEGR" length="60" not-null="true"/>
+        </property>
+        <property name="siclinomepq" type="string">
+            <column name="SICLINOMEPQ" length="30"/>
+        </property>
+        <property name="siclistatus" type="string">
+            <column name="SICLISTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="sicliinivig" type="date">
+            <column name="SICLIINIVIG" length="10"/>
+        </property>
+        <property name="siclifimvig" type="date">
+            <column name="SICLIFIMVIG" length="10"/>
+        </property>
+        <property name="sicliindicacao" type="integer">
+            <column name="SICLIINDICACAO"/>
+        </property>
+        <property name="siclilingua" type="string">
+            <column name="SICLILINGUA" length="10"/>
+        </property>
+        <many-to-one name="geTbMeiosConhecimento" class="com.testdb.data.GeTbMeiosConhecimento">
+            <column name="SICLIIDMEIOCONH"/>
+        </many-to-one>
+        <set name="geSgGruposes" inverse="true" cascade="">
+            <key>
+                <column name="GESGGrpCliID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgGrupos"/>
+        </set>
+        <set name="geCaEmpresases" inverse="true" cascade="">
+            <key>
+                <column name="GECAEMPCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpresas"/>
+        </set>
+        <set name="siCliTels" inverse="true" cascade="">
+            <key>
+                <column name="SICLITELCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliTel"/>
+        </set>
+        <set name="siCliEnds" inverse="true" cascade="">
+            <key>
+                <column name="SICLIENDCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliEnd"/>
+        </set>
+        <set name="siCliWebs" inverse="true" cascade="">
+            <key>
+                <column name="SICLIWEBCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliWeb"/>
+        </set>
+        <set name="geTbNatJurClasses" inverse="true" cascade="">
+            <key>
+                <column name="GENAJUCCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbNatJurClasse"/>
+        </set>
+        <set name="stEpFabricanteses" inverse="true" cascade="">
+            <key>
+                <column name="STEPFACLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricantes"/>
+        </set>
+        <set name="geTbTiposTelefones" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOTELCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposTelefone"/>
+        </set>
+        <set name="geTbMunicipioses" inverse="true" cascade="">
+            <key>
+                <column name="GEMUNICCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbMunicipios"/>
+        </set>
+        <set name="siCliDocsPfs" inverse="true" cascade="">
+            <key>
+                <column name="SICLIDPFCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliDocsPf"/>
+        </set>
+        <set name="geTbTiposContas" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOCONCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposConta"/>
+        </set>
+        <set name="geTbIndexes" inverse="true" cascade="">
+            <key>
+                <column name="GEINDEXCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbIndex"/>
+        </set>
+        <set name="geTbQualificacaoSocs" inverse="true" cascade="">
+            <key>
+                <column name="GEQUALSOCCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbQualificacaoSoc"/>
+        </set>
+        <set name="siCliContases" inverse="true" cascade="">
+            <key>
+                <column name="SICLICTSCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliContas"/>
+        </set>
+        <set name="geTbBancoses" inverse="true" cascade="">
+            <key>
+                <column name="GEBANCOCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbBancos"/>
+        </set>
+        <set name="siCliDocsPjs" inverse="true" cascade="">
+            <key>
+                <column name="SICLIDPJCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliDocsPj"/>
+        </set>
+        <set name="siCliModulos" inverse="true" cascade="">
+            <key>
+                <column name="SICXMIDCLIENTE" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliModulo"/>
+        </set>
+        <set name="geTbTiposEmpresases" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOEMPCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposEmpresas"/>
+        </set>
+        <set name="geTbTiposContatos" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOCTOCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposContato"/>
+        </set>
+        <set name="geTbTiposEnderecos" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOENDCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposEndereco"/>
+        </set>
+        <set name="siCliHisPgtos" inverse="true" cascade="">
+            <key>
+                <column name="SICHPIDCLIENTE" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliHisPgto"/>
+        </set>
+        <set name="geTbTiposContratos" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOCTRCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposContrato"/>
+        </set>
+        <set name="geTbTiposDocs" inverse="true" cascade="">
+            <key>
+                <column name="GETIPODOCCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposDoc"/>
+        </set>
+        <set name="geTbTiposWebs" inverse="true" cascade="">
+            <key>
+                <column name="GETIPOWEBCLIID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbTiposWeb"/>
+        </set>
+        <set name="geTbUfs" inverse="true" cascade="">
+            <key>
+                <column name="GEUFCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeTbUf"/>
+        </set>
+        <set name="stEpCategFabrs" inverse="true" cascade="">
+            <key>
+                <column name="STEPCFCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpCategFabr"/>
+        </set>
+        <set name="siCliContatoses" inverse="true" cascade="">
+            <key>
+                <column name="SICLICONCLIENTEID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliContatos"/>
+        </set>
+        <set name="siCliValoreses" inverse="true" cascade="">
+            <key>
+                <column name="SICVAIDCLIENTE" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliValores"/>
+        </set>
+    </class>
+</hibernate-mapping>

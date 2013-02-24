@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliTel" table="si_cli_tel" dynamic-insert="false" dynamic-update="false">
+        <id name="siclitelid" type="integer">
+            <column name="SICLITELID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclitelddd" type="string">
+            <column name="SICLITELDDD" length="6"/>
+        </property>
+        <property name="siclitelno" type="string">
+            <column name="SICLITELNO" length="8" not-null="true"/>
+        </property>
+        <property name="siclitelramal" type="string">
+            <column name="SICLITELRAMAL" length="50"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="SICLITELCLIENTEID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefone" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="SICLITELTIPOID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

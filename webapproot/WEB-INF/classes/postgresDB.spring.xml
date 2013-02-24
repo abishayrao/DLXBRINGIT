@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+
+<!-- Generated 01/23/2013 09:59:10
+
+Configuration for 'postgresDB' database service
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <bean 
+        id="postgresDB"
+        class="com.postgresdb.PostgresDB"
+        scope="singleton"
+        lazy-init="true">
+        <property name="dataServiceManager">
+            <ref bean="postgresDBDataService"/>
+        </property>
+        <property name="taskManager">
+            <ref bean="postgresDBTaskMgr"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:postgresDB.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean 
+        id="postgresDBDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+        lazy-init="true">
+        <property name="driverClassName" value="${postgresDB.driverClassName}"/>
+        <property name="url" value="${postgresDB.connectionUrl}"/>
+        <property name="username" value="${postgresDB.username}"/>
+        <property name="password" value="${postgresDB.password}"/>
+    </bean>
+
+
+    <bean 
+        id="postgresDBTxMgr" 
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+        lazy-init="true">
+        <property name="sessionFactory">
+            <ref bean="postgresDBSessionFactory"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        id="postgresDBHibernateTemplate"
+        class="org.springframework.orm.hibernate3.HibernateTemplate"
+        lazy-init="true">
+        <property name="sessionFactory"> 
+            <ref bean="postgresDBSessionFactory"/>
+        </property>
+    </bean>  
+
+
+    <bean 
+        id="postgresDBSessionFactory" 
+        class="com.wavemaker.runtime.data.spring.ConfigurationAndSessionFactoryBean"
+        lazy-init="true">
+
+        <!-- A unique name for this SessionFactory's configuration -->
+        <property name="name" value="postgresDB"/>
+        <property name="dataSource" ref="postgresDBDataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${postgresDB.dialect}</prop>
+                <prop key="hibernate.transaction.factory_class">
+                    org.hibernate.transaction.JDBCTransactionFactory
+                </prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                
+            </props> 
+        </property>
+
+        <property name="mappingResources">
+            <list>
+
+<value>com/postgresdb/data/GeCaEmpDocsPf.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposTelefone.hbm.xml</value>
+<value>com/postgresdb/data/GeTbBancos.hbm.xml</value>
+<value>com/postgresdb/data/SiClientes.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpDocsPj.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModComponentes.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModCompoHelp.hbm.xml</value>
+<value>com/postgresdb/data/SiSisVerComponentes.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpContas.hbm.xml</value>
+<value>com/postgresdb/data/GeSgGruXCompo.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpWeb.hbm.xml</value>
+<value>com/postgresdb/data/DiHlHelpUsu.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModTabIndex.hbm.xml</value>
+<value>com/postgresdb/data/GeTbCnaeSecao.hbm.xml</value>
+<value>com/postgresdb/data/GeTbNatJuridica.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposContrato.hbm.xml</value>
+<value>com/postgresdb/data/GeTbCnaeSubclasse.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposEmpresas.hbm.xml</value>
+<value>com/postgresdb/data/GeTbIndexCota.hbm.xml</value>
+<value>com/postgresdb/data/SiCliContas.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpCentrocusto.hbm.xml</value>
+<value>com/postgresdb/data/SiCliValores.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpTel.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpCnaeSec.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpresas.hbm.xml</value>
+<value>com/postgresdb/data/GeTbIndex.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModDescrDet.hbm.xml</value>
+<value>com/postgresdb/data/GeSgGruXModulos.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpSocios.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModulo.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposContato.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModCompCampos.hbm.xml</value>
+<value>com/postgresdb/data/GeSgGruXEmpresa.hbm.xml</value>
+<value>com/postgresdb/data/SiCliContratos.hbm.xml</value>
+<value>com/postgresdb/data/SiSisVersao.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposEndereco.hbm.xml</value>
+<value>com/postgresdb/data/SiCliContatos.hbm.xml</value>
+<value>com/postgresdb/data/SiCliTel.hbm.xml</value>
+<value>com/postgresdb/data/SiSistema.hbm.xml</value>
+<value>com/postgresdb/data/SiCliDocsPj.hbm.xml</value>
+<value>com/postgresdb/data/GeTbQualificacaoSoc.hbm.xml</value>
+<value>com/postgresdb/data/SiCliHisPgto.hbm.xml</value>
+<value>com/postgresdb/data/GeTbBcAgencias.hbm.xml</value>
+<value>com/postgresdb/data/SiCliDocsPf.hbm.xml</value>
+<value>com/postgresdb/data/GeTbCnaeDivisao.hbm.xml</value>
+<value>com/postgresdb/data/SiCliWeb.hbm.xml</value>
+<value>com/postgresdb/data/SiCliModulo.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpHisPgto.hbm.xml</value>
+<value>com/postgresdb/data/GeTbCnaeClasse.hbm.xml</value>
+<value>com/postgresdb/data/GeTbMeiosConhecimento.hbm.xml</value>
+<value>com/postgresdb/data/GeSgGrupos.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposDoc.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModTabelas.hbm.xml</value>
+<value>com/postgresdb/data/GeSgAuditoria.hbm.xml</value>
+<value>com/postgresdb/data/GeTbMunicipios.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpContratos.hbm.xml</value>
+<value>com/postgresdb/data/GeTbCnaeGrupo.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModCampoHelp.hbm.xml</value>
+<value>com/postgresdb/data/SiProduto.hbm.xml</value>
+<value>com/postgresdb/data/GeTbUf.hbm.xml</value>
+<value>com/postgresdb/data/SiCliContatosHist.hbm.xml</value>
+<value>com/postgresdb/data/GeSgGruXCampo.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposWeb.hbm.xml</value>
+<value>com/postgresdb/data/GeSgHistSenhas.hbm.xml</value>
+<value>com/postgresdb/data/GeSgUsuarios.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpEnd.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpLotacao.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpContatos.hbm.xml</value>
+<value>com/postgresdb/data/SiCliEnd.hbm.xml</value>
+<value>com/postgresdb/data/GeTbNatJurClasse.hbm.xml</value>
+<value>com/postgresdb/data/SiSisModTabCampos.hbm.xml</value>
+<value>com/postgresdb/data/GeCaEmpContatosHist.hbm.xml</value>
+<value>com/postgresdb/data/GeTbTiposConta.hbm.xml</value>
+
+<value>com/postgresdb/data/GeCaEmpDocsPf.ql.xml</value>
+<value>com/postgresdb/data/app-queries.ql.xml</value>
+
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- the data service bean instance is injected into the service bean -->
+    <bean 
+        id="postgresDBDataService" 
+        class="com.wavemaker.runtime.data.spring.SpringDataServiceManager"
+        lazy-init="true">
+        <constructor-arg>
+            <!-- the value of the "name" property of the SessionFactory -->
+            <value>postgresDB</value>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="postgresDBHibernateTemplate"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="postgresDBTxMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="postgresDBTaskMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="useIndividualCRUDOperations" value="false"/>
+                <entry key="refreshEntities" value=""/> 
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <bean 
+        id="postgresDBTaskMgr"
+        class="com.wavemaker.runtime.data.DefaultTaskManager"
+        lazy-init="true"/>
+
+    <bean class="com.wavemaker.runtime.service.events.EventWire"
+        lazy-init="false">
+        <property name="serviceWire" ref="postgresDBServiceWire"/>
+        <property name="eventListener">
+            <bean class="com.wavemaker.runtime.data.DataServiceEventListener"/>
+        </property>
+    </bean>
+
+    <bean id="postgresDBServiceWire"
+        class="com.wavemaker.runtime.service.reflect.ReflectServiceWire"
+        lazy-init="false" scope="singleton">
+        <property name="serviceId" value="postgresDB"/>
+        <property name="serviceType" ref="DataService"/>
+    </bean>
+
+</beans>

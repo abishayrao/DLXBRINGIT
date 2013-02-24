@@ -1,0 +1,48 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiCliContatos" table="si_cli_contatos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliconid" type="integer">
+            <column name="sicliconid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicliconnome" type="string">
+            <column name="sicliconnome" length="30" not-null="true"/>
+        </property>
+        <property name="sicliconcargo" type="string">
+            <column name="sicliconcargo" length="30" not-null="true"/>
+        </property>
+        <property name="siclicondtnasc" type="date">
+            <column name="siclicondtnasc" length="13"/>
+        </property>
+        <property name="sicliconteladdd" type="string">
+            <column name="sicliconteladdd" length="6"/>
+        </property>
+        <property name="siclicontelano" type="string">
+            <column name="siclicontelano" length="8"/>
+        </property>
+        <property name="siclicontelbddd" type="string">
+            <column name="siclicontelbddd" length="6"/>
+        </property>
+        <property name="siclicontelbno" type="string">
+            <column name="siclicontelbno" length="8"/>
+        </property>
+        <property name="sicliconemail" type="string">
+            <column name="sicliconemail" length="50"/>
+        </property>
+        <many-to-one name="geTbTiposTelefoneBySiclicontelatpid" class="com.saasdb.data.GeTbTiposTelefone">
+            <column name="siclicontelatpid"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="sicliconclienteid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefoneBySiclicontelbtpid" class="com.saasdb.data.GeTbTiposTelefone">
+            <column name="siclicontelbtpid"/>
+        </many-to-one>
+        <set name="siCliContatosHists" inverse="true" cascade="">
+            <key>
+                <column name="siclihccontatoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContatosHist"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbCnaeSubclasse" table="ge_tb_cnae_subclasse" dynamic-insert="false" dynamic-update="false">
+        <id name="gecnaeecod" type="string">
+            <column name="GECNAEECOD" length="7"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="gecnaeenome" type="string">
+            <column name="GECNAEENOME" length="100" not-null="true"/>
+        </property>
+        <many-to-one name="geTbCnaeClasse" class="com.testdb.data.GeTbCnaeClasse">
+            <column name="GECNAEECLASSE" length="5" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpCnaeSecs" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPCNSCNAEID" length="7"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpCnaeSec"/>
+        </set>
+        <set name="geCaEmpDocsPjs" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPDPJCNAEID" length="7"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpDocsPj"/>
+        </set>
+        <set name="geCaEmpLotacaos" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPLOTCNAEID" length="7"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpLotacao"/>
+        </set>
+    </class>
+</hibernate-mapping>

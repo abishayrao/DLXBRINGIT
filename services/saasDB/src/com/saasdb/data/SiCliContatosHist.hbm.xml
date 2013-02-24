@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiCliContatosHist" table="si_cli_contatos_hist" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siclihcid" type="integer">
+            <column name="siclihcid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclihcdata" type="date">
+            <column name="siclihcdata" length="13" not-null="true"/>
+        </property>
+        <property name="siclihchora" type="integer">
+            <column name="siclihchora" not-null="true"/>
+        </property>
+        <property name="siclihcatendente" type="string">
+            <column name="siclihcatendente" length="30"/>
+        </property>
+        <property name="siclihchistorico" type="string">
+            <column name="siclihchistorico" length="2000"/>
+        </property>
+        <many-to-one name="siCliContatos" class="com.saasdb.data.SiCliContatos">
+            <column name="siclihccontatoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposContato" class="com.saasdb.data.GeTbTiposContato">
+            <column name="siclihctipoid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

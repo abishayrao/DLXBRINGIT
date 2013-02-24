@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+
+<!-- Generated 02/23/2013 10:49:57
+
+Configuration for 'testDB' database service
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <bean 
+        id="testDB"
+        class="com.testdb.TestDB"
+        scope="singleton"
+        lazy-init="true">
+        <property name="dataServiceManager">
+            <ref bean="testDBDataService"/>
+        </property>
+        <property name="taskManager">
+            <ref bean="testDBTaskMgr"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:testDB.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean 
+        id="testDBDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+        lazy-init="true">
+        <property name="driverClassName" value="${testDB.driverClassName}"/>
+        <property name="url" value="${testDB.connectionUrl}"/>
+        <property name="username" value="${testDB.username}"/>
+        <property name="password" value="${testDB.password}"/>
+    </bean>
+
+
+    <bean 
+        id="testDBTxMgr" 
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+        lazy-init="true">
+        <property name="sessionFactory">
+            <ref bean="testDBSessionFactory"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        id="testDBHibernateTemplate"
+        class="org.springframework.orm.hibernate3.HibernateTemplate"
+        lazy-init="true">
+        <property name="sessionFactory"> 
+            <ref bean="testDBSessionFactory"/>
+        </property>
+    </bean>  
+
+
+    <bean 
+        id="testDBSessionFactory" 
+        class="com.wavemaker.runtime.data.spring.ConfigurationAndSessionFactoryBean"
+        lazy-init="true">
+
+        <!-- A unique name for this SessionFactory's configuration -->
+        <property name="name" value="testDB"/>
+        <property name="dataSource" ref="testDBDataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${testDB.dialect}</prop>
+                <prop key="hibernate.transaction.factory_class">
+                    org.hibernate.transaction.JDBCTransactionFactory
+                </prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                
+            </props> 
+        </property>
+
+        <property name="mappingResources">
+            <list>
+
+<value>com/testdb/data/SiCliModulo.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposDoc.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpContatos.hbm.xml</value>
+<value>com/testdb/data/GeSgGruXCompo.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposEndereco.hbm.xml</value>
+<value>com/testdb/data/GeTbIndexCota.hbm.xml</value>
+<value>com/testdb/data/SiSisModTabIndex.hbm.xml</value>
+<value>com/testdb/data/SiProduto.hbm.xml</value>
+<value>com/testdb/data/GeTbCnaeClasse.hbm.xml</value>
+<value>com/testdb/data/SiCliHisPgto.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpHisPgto.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposContrato.hbm.xml</value>
+<value>com/testdb/data/StEpFabricTel.hbm.xml</value>
+<value>com/testdb/data/GeTbCnaeGrupo.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpContas.hbm.xml</value>
+<value>com/testdb/data/SiCliDocsPj.hbm.xml</value>
+<value>com/testdb/data/GeTbCnaeSubclasse.hbm.xml</value>
+<value>com/testdb/data/SiCliEnd.hbm.xml</value>
+<value>com/testdb/data/SiCliDocsPf.hbm.xml</value>
+<value>com/testdb/data/GeSgHistSenhas.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposTelefone.hbm.xml</value>
+<value>com/testdb/data/SiCliWeb.hbm.xml</value>
+<value>com/testdb/data/SiCliContatos.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpWeb.hbm.xml</value>
+<value>com/testdb/data/DiHlHelpUsu.hbm.xml</value>
+<value>com/testdb/data/GeTbMeiosConhecimento.hbm.xml</value>
+<value>com/testdb/data/SiSisModTabCampos.hbm.xml</value>
+<value>com/testdb/data/SiSisVersao.hbm.xml</value>
+<value>com/testdb/data/GeTbMunicipios.hbm.xml</value>
+<value>com/testdb/data/GeSgGruXEmpresa.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpEnd.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpLotacao.hbm.xml</value>
+<value>com/testdb/data/GeTbUf.hbm.xml</value>
+<value>com/testdb/data/StEpFabricWeb.hbm.xml</value>
+<value>com/testdb/data/SiCliContatosHist.hbm.xml</value>
+<value>com/testdb/data/GeTbIndex.hbm.xml</value>
+<value>com/testdb/data/GeTbCnaeSecao.hbm.xml</value>
+<value>com/testdb/data/SiSisVerComponentes.hbm.xml</value>
+<value>com/testdb/data/SiCliValores.hbm.xml</value>
+<value>com/testdb/data/SiSisModCompoHelp.hbm.xml</value>
+<value>com/testdb/data/SiSisModDescrDet.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpDocsPf.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposContato.hbm.xml</value>
+<value>com/testdb/data/StEpFabricContatos.hbm.xml</value>
+<value>com/testdb/data/SiSisModCompCampos.hbm.xml</value>
+<value>com/testdb/data/GeTbCnaeDivisao.hbm.xml</value>
+<value>com/testdb/data/Selectionandordering.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpDocsPj.hbm.xml</value>
+<value>com/testdb/data/GeTbQualificacaoSoc.hbm.xml</value>
+<value>com/testdb/data/GeSgAuditoria.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposEmpresas.hbm.xml</value>
+<value>com/testdb/data/SiSisModulo.hbm.xml</value>
+<value>com/testdb/data/GeSgGrupos.hbm.xml</value>
+<value>com/testdb/data/GeSgUsuarios.hbm.xml</value>
+<value>com/testdb/data/GeTbBcAgencias.hbm.xml</value>
+<value>com/testdb/data/SiClientes.hbm.xml</value>
+<value>com/testdb/data/StEpCategFabr.hbm.xml</value>
+<value>com/testdb/data/GeTbNatJuridica.hbm.xml</value>
+<value>com/testdb/data/SiCliContas.hbm.xml</value>
+<value>com/testdb/data/SiSisModCampoHelp.hbm.xml</value>
+<value>com/testdb/data/SiCliTel.hbm.xml</value>
+<value>com/testdb/data/GeSgGruXCampo.hbm.xml</value>
+<value>com/testdb/data/SiSisModTabelas.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposConta.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpTel.hbm.xml</value>
+<value>com/testdb/data/GeTbTiposWeb.hbm.xml</value>
+<value>com/testdb/data/GeCaFuncionario.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpCentrocusto.hbm.xml</value>
+<value>com/testdb/data/StEpFabricantes.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpContatosHist.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpSocios.hbm.xml</value>
+<value>com/testdb/data/SiSistema.hbm.xml</value>
+<value>com/testdb/data/GeSgGruXModulos.hbm.xml</value>
+<value>com/testdb/data/GeTbNatJurClasse.hbm.xml</value>
+<value>com/testdb/data/SiSisModComponentes.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpresas.hbm.xml</value>
+<value>com/testdb/data/StEpFabricEnd.hbm.xml</value>
+<value>com/testdb/data/GeTbBancos.hbm.xml</value>
+<value>com/testdb/data/GeCaEmpCnaeSec.hbm.xml</value>
+
+<value>com/testdb/data/SiCliModulo.ql.xml</value>
+<value>com/testdb/data/app-queries.ql.xml</value>
+
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- the data service bean instance is injected into the service bean -->
+    <bean 
+        id="testDBDataService" 
+        class="com.wavemaker.runtime.data.spring.SpringDataServiceManager"
+        lazy-init="true">
+        <constructor-arg>
+            <!-- the value of the "name" property of the SessionFactory -->
+            <value>testDB</value>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="testDBHibernateTemplate"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="testDBTxMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="testDBTaskMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="useIndividualCRUDOperations" value="false"/>
+                <entry key="refreshEntities" value=""/> 
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <bean 
+        id="testDBTaskMgr"
+        class="com.wavemaker.runtime.data.DefaultTaskManager"
+        lazy-init="true"/>
+
+    <bean class="com.wavemaker.runtime.service.events.EventWire"
+        lazy-init="false">
+        <property name="serviceWire" ref="testDBServiceWire"/>
+        <property name="eventListener">
+            <bean class="com.wavemaker.runtime.data.DataServiceEventListener"/>
+        </property>
+    </bean>
+
+    <bean id="testDBServiceWire"
+        class="com.wavemaker.runtime.service.reflect.ReflectServiceWire"
+        lazy-init="false" scope="singleton">
+        <property name="serviceId" value="testDB"/>
+        <property name="serviceType" ref="DataService"/>
+    </bean>
+
+</beans>

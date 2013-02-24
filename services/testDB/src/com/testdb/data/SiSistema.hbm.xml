@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiSistema" table="si_sistema" dynamic-insert="false" dynamic-update="false">
+        <id name="sisisid" type="integer">
+            <column name="SISISID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sisissigla" type="string">
+            <column name="SISISSIGLA" length="5" not-null="true"/>
+        </property>
+        <property name="sisisnome" type="string">
+            <column name="SISISNOME" length="80" not-null="true"/>
+        </property>
+        <property name="sisisdescricao" type="string">
+            <column name="SISISDESCRICAO" length="2000"/>
+        </property>
+        <property name="sisisstatus" type="string">
+            <column name="SISISSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="sisisinivig" type="date">
+            <column name="SISISINIVIG" length="10"/>
+        </property>
+        <property name="sisisfimvig" type="date">
+            <column name="SISISFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siProduto" class="com.testdb.data.SiProduto">
+            <column name="SISISPRODID" not-null="true"/>
+        </many-to-one>
+        <set name="siSisVersaos" inverse="true" cascade="">
+            <key>
+                <column name="SIMVEIDSISTEMA" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisVersao"/>
+        </set>
+        <set name="siSisModulos" inverse="true" cascade="">
+            <key>
+                <column name="SIMODIDSISTEMA" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModulo"/>
+        </set>
+    </class>
+</hibernate-mapping>

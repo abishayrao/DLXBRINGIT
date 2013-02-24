@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpWeb" table="ge_ca_emp_web" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempwebid" type="integer">
+            <column name="geempwebid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempwebtxt" type="string">
+            <column name="geempwebtxt" length="60"/>
+        </property>
+        <many-to-one name="geTbTiposWeb" class="com.saasdb.data.GeTbTiposWeb">
+            <column name="geempwebtipoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.saasdb.data.GeCaEmpresas">
+            <column name="geempwebempresaid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

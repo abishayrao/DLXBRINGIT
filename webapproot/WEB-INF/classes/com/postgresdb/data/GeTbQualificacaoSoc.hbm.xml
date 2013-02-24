@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbQualificacaoSoc" table="ge_tb_qualificacao_soc" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gequalsocid" type="integer">
+            <column name="gequalsocid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gequalsoccod" type="string">
+            <column name="gequalsoccod" length="2" not-null="true"/>
+        </property>
+        <property name="gequalsocdescr" type="string">
+            <column name="gequalsocdescr" length="80" not-null="true"/>
+        </property>
+        <property name="gequalsocstatus" type="string">
+            <column name="gequalsocstatus" length="1" not-null="true"/>
+        </property>
+        <property name="gequalsocinivig" type="date">
+            <column name="gequalsocinivig" length="13"/>
+        </property>
+        <property name="gequalsocfimvig" type="date">
+            <column name="gequalsocfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="gequalsoccliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpSocioses" inverse="true" cascade="">
+            <key>
+                <column name="geempsoquali"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpSocios"/>
+        </set>
+    </class>
+</hibernate-mapping>

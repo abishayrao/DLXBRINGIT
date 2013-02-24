@@ -1,0 +1,108 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiSisModComponentes" table="si_sis_mod_componentes" dynamic-insert="false" dynamic-update="false">
+        <id name="sismcid" type="integer">
+            <column name="SISMCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sismcnome" type="string">
+            <column name="SISMCNOME" length="60" not-null="true"/>
+        </property>
+        <property name="sismctipo" type="string">
+            <column name="SISMCTIPO" length="2" not-null="true"/>
+        </property>
+        <property name="sismcopcempresa" type="string">
+            <column name="SISMCOPCEMPRESA" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcvisib" type="string">
+            <column name="SISMCOPCVISIB" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcobrig" type="string">
+            <column name="SISMCOPCOBRIG" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcdireitos" type="string">
+            <column name="SISMCOPCDIREITOS" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcvalida" type="string">
+            <column name="SISMCOPCVALIDA" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopchelp" type="string">
+            <column name="SISMCOPCHELP" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopchelpusu" type="string">
+            <column name="SISMCOPCHELPUSU" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopctrilha" type="string">
+            <column name="SISMCOPCTRILHA" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcultregi" type="string">
+            <column name="SISMCOPCULTREGI" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcdirdvl" type="string">
+            <column name="SISMCOPCDIRDVL" length="1" not-null="true"/>
+        </property>
+        <property name="sismcopcesubtask" type="string">
+            <column name="SISMCOPCESUBTASK" length="1" not-null="true"/>
+        </property>
+        <property name="sismcnomemenu" type="string">
+            <column name="SISMCNOMEMENU" length="60"/>
+        </property>
+        <property name="sismcmenu" type="integer">
+            <column name="SISMCMENU"/>
+        </property>
+        <property name="sismcmenuseq" type="integer">
+            <column name="SISMCMENUSEQ"/>
+        </property>
+        <property name="sismctabelaprinc" type="string">
+            <column name="SISMCTABELAPRINC" length="60"/>
+        </property>
+        <property name="sismcstatus" type="string">
+            <column name="SISMCSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="sismctempodvlpre" type="integer">
+            <column name="SISMCTEMPODVLPRE"/>
+        </property>
+        <property name="sismctempodvlini" type="integer">
+            <column name="SISMCTEMPODVLINI"/>
+        </property>
+        <property name="sismctempodvlfim" type="integer">
+            <column name="SISMCTEMPODVLFIM"/>
+        </property>
+        <property name="sismcdatadvlini" type="date">
+            <column name="SISMCDATADVLINI" length="10"/>
+        </property>
+        <property name="sismcdatadvlfim" type="date">
+            <column name="SISMCDATADVLFIM" length="10"/>
+        </property>
+        <property name="sismcdescricao" type="string">
+            <column name="SISMCDESCRICAO" length="65535"/>
+        </property>
+        <many-to-one name="siSisModulo" class="com.testdb.data.SiSisModulo">
+            <column name="SISMCIDMODULO" not-null="true"/>
+        </many-to-one>
+        <set name="diHlHelpUsus" inverse="true" cascade="">
+            <key>
+                <column name="DIHLHLUIDCompo" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.DiHlHelpUsu"/>
+        </set>
+        <set name="siSisModCompCamposes" inverse="true" cascade="">
+            <key>
+                <column name="SISMCCIDCOMPO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModCompCampos"/>
+        </set>
+        <set name="siSisVerComponenteses" inverse="true" cascade="">
+            <key>
+                <column name="SIMVECOMIDCOMPO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisVerComponentes"/>
+        </set>
+        <set name="siSisModCompoHelps" inverse="true" cascade="">
+            <key>
+                <column name="SIMCOHIDCOMPO" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModCompoHelp"/>
+        </set>
+    </class>
+</hibernate-mapping>

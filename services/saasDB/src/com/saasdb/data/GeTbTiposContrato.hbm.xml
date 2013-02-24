@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbTiposContrato" table="ge_tb_tipos_contrato" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoctrid" type="integer">
+            <column name="getipoctrid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoctrcod" type="string">
+            <column name="getipoctrcod" length="5" not-null="true"/>
+        </property>
+        <property name="getipoctrdescr" type="string">
+            <column name="getipoctrdescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipoctrstatus" type="string">
+            <column name="getipoctrstatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipoctrinivig" type="date">
+            <column name="getipoctrinivig" length="13"/>
+        </property>
+        <property name="getipoctrfimvig" type="date">
+            <column name="getipoctrfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="getipoctrcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpContratoses" inverse="true" cascade="">
+            <key>
+                <column name="geempcrtipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpContratos"/>
+        </set>
+        <set name="siCliContratoses" inverse="true" cascade="">
+            <key>
+                <column name="siclicrtipoid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContratos"/>
+        </set>
+    </class>
+</hibernate-mapping>

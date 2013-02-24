@@ -1,0 +1,57 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpHisPgto" table="ge_ca_emp_his_pgto" dynamic-insert="false" dynamic-update="false">
+        <id name="geemphpid" type="integer">
+            <column name="GEEMPHPID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemphptipocobr" type="string">
+            <column name="GEEMPHPTIPOCOBR" length="1" not-null="true"/>
+        </property>
+        <property name="geemphpnodoc" type="string">
+            <column name="GEEMPHPNODOC" length="20" not-null="true"/>
+        </property>
+        <property name="geemphpparcela" type="string">
+            <column name="GEEMPHPPARCELA" length="2" not-null="true"/>
+        </property>
+        <property name="geemphpdtvenc" type="date">
+            <column name="GEEMPHPDTVENC" length="10" not-null="true"/>
+        </property>
+        <property name="geemphpdtpgto" type="date">
+            <column name="GEEMPHPDTPGTO" length="10"/>
+        </property>
+        <property name="geemphpdesctipo" type="string">
+            <column name="GEEMPHPDESCTIPO" length="1"/>
+        </property>
+        <property name="geemphpdescval" type="float">
+            <column name="GEEMPHPDESCVAL" precision="12"/>
+        </property>
+        <property name="geemphpmultatipo" type="string">
+            <column name="GEEMPHPMULTATIPO" length="1"/>
+        </property>
+        <property name="geemphpmultaval" type="float">
+            <column name="GEEMPHPMULTAVAL" precision="12"/>
+        </property>
+        <property name="geemphpvalapagar" type="float">
+            <column name="GEEMPHPVALAPAGAR" precision="12" not-null="true"/>
+        </property>
+        <property name="geemphpimpostos" type="float">
+            <column name="GEEMPHPIMPOSTOS" precision="12"/>
+        </property>
+        <property name="geemphpvalpago" type="float">
+            <column name="GEEMPHPVALPAGO" precision="12"/>
+        </property>
+        <property name="geemphpstatus" type="string">
+            <column name="GEEMPHPSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geemphpcartorio" type="string">
+            <column name="GEEMPHPCARTORIO" length="1"/>
+        </property>
+        <property name="geemphpobs" type="string">
+            <column name="GEEMPHPOBS" length="500"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEEMPHPIDEMPRESA" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

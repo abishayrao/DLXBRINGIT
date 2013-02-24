@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpDocsPj" table="ge_ca_emp_docs_pj" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempdpjempresaid" type="integer">
+            <column name="geempdpjempresaid"/>
+            <generator class="foreign"/>
+        </id>
+        <property name="geempdpjtipodoc" type="string">
+            <column name="geempdpjtipodoc" length="1" not-null="true"/>
+        </property>
+        <property name="geempdpjdoc" type="string">
+            <column name="geempdpjdoc" length="14" not-null="true"/>
+        </property>
+        <property name="geempdpjie" type="string">
+            <column name="geempdpjie" length="20"/>
+        </property>
+        <property name="geempdpjiedata" type="date">
+            <column name="geempdpjiedata" length="13"/>
+        </property>
+        <property name="geempdpjim" type="string">
+            <column name="geempdpjim" length="20"/>
+        </property>
+        <property name="geempdpjimdata" type="date">
+            <column name="geempdpjimdata" length="13"/>
+        </property>
+        <many-to-one name="geTbCnaeSubclasse" class="com.saasdb.data.GeTbCnaeSubclasse">
+            <column name="geempdpjcnaeid" length="7"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

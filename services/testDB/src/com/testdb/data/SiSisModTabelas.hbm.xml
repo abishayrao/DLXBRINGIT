@@ -1,0 +1,51 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiSisModTabelas" table="si_sis_mod_tabelas" dynamic-insert="false" dynamic-update="false">
+        <id name="sismtid" type="integer">
+            <column name="SISMTID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sismtnome" type="string">
+            <column name="SISMTNOME" length="30" not-null="true"/>
+        </property>
+        <property name="sismtpublicname" type="string">
+            <column name="SISMTPUBLICNAME" length="30"/>
+        </property>
+        <property name="sismtclasse" type="string">
+            <column name="SISMTCLASSE" length="30"/>
+        </property>
+        <property name="sismtdimens" type="string">
+            <column name="SISMTDIMENS" length="15"/>
+        </property>
+        <property name="sismtvolinicial" type="string">
+            <column name="SISMTVOLINICIAL" length="15"/>
+        </property>
+        <property name="sismtdescricao" type="string">
+            <column name="SISMTDESCRICAO" length="1000"/>
+        </property>
+        <property name="sismttemid" type="string">
+            <column name="SISMTTEMID" length="1" not-null="true"/>
+        </property>
+        <property name="sismtdadosIni" type="string">
+            <column name="SISMTDadosIni" length="1" not-null="true"/>
+        </property>
+        <property name="sismtclienteUsa" type="string">
+            <column name="SISMTClienteUsa" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="siSisModulo" class="com.testdb.data.SiSisModulo">
+            <column name="SISMTIDMODULO" not-null="true"/>
+        </many-to-one>
+        <set name="siSisModTabIndexes" inverse="true" cascade="">
+            <key>
+                <column name="SISMTIIDTABELA" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModTabIndex"/>
+        </set>
+        <set name="siSisModTabCamposes" inverse="true" cascade="">
+            <key>
+                <column name="SISMTCIDTABELA" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiSisModTabCampos"/>
+        </set>
+    </class>
+</hibernate-mapping>

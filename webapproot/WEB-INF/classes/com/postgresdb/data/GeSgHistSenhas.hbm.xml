@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeSgHistSenhas" table="ge_sg_hist_senhas" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gesghsenhaid" type="integer">
+            <column name="gesghsenhaid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesghsenhasenha" type="string">
+            <column name="gesghsenhasenha" length="20" not-null="true"/>
+        </property>
+        <property name="gesgusude" type="date">
+            <column name="gesgusude" length="13"/>
+        </property>
+        <property name="gesgusuate" type="date">
+            <column name="gesgusuate" length="13"/>
+        </property>
+        <many-to-one name="geSgUsuarios" class="com.postgresdb.data.GeSgUsuarios">
+            <column name="gesghsenhausuid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

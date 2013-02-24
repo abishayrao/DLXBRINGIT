@@ -1,0 +1,81 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbUf" table="ge_tb_uf" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geufcid" type="integer">
+            <column name="geufcid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geufcod" type="string">
+            <column name="geufcod" length="2" not-null="true"/>
+        </property>
+        <property name="geufnome" type="string">
+            <column name="geufnome" length="60" not-null="true"/>
+        </property>
+        <property name="geufstatus" type="string">
+            <column name="geufstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geufinivig" type="date">
+            <column name="geufinivig" length="13"/>
+        </property>
+        <property name="geuffimvig" type="date">
+            <column name="geuffimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="geufclienteid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpSociosesForGeempsouf" inverse="true" cascade="">
+            <key>
+                <column name="geempsouf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpSocios"/>
+        </set>
+        <set name="geCaEmpDocsPfsForGeempdpfregprofuf" inverse="true" cascade="">
+            <key>
+                <column name="geempdpfregprofuf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpDocsPf"/>
+        </set>
+        <set name="geCaEmpEnds" inverse="true" cascade="">
+            <key>
+                <column name="geempenduf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpEnd"/>
+        </set>
+        <set name="siCliDocsPfs" inverse="true" cascade="">
+            <key>
+                <column name="siclidpfrguf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.SiCliDocsPf"/>
+        </set>
+        <set name="geTbMunicipioses" inverse="true" cascade="">
+            <key>
+                <column name="gemunicuf" not-null="true"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeTbMunicipios"/>
+        </set>
+        <set name="geCaEmpSociosesForGeempsorguf" inverse="true" cascade="">
+            <key>
+                <column name="geempsorguf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpSocios"/>
+        </set>
+        <set name="geCaEmpLotacaos" inverse="true" cascade="">
+            <key>
+                <column name="geemplotuf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpLotacao"/>
+        </set>
+        <set name="siCliEnds" inverse="true" cascade="">
+            <key>
+                <column name="siclienduf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.SiCliEnd"/>
+        </set>
+        <set name="geCaEmpDocsPfsForGeempdpfrguf" inverse="true" cascade="">
+            <key>
+                <column name="geempdpfrguf"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpDocsPf"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,99 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpSocios" table="ge_ca_emp_socios" dynamic-insert="false" dynamic-update="false">
+        <id name="geempsoid" type="integer">
+            <column name="GEEMPSOID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempsonome" type="string">
+            <column name="GEEMPSONOME" length="80" not-null="true"/>
+        </property>
+        <property name="geempsodtnasc" type="date">
+            <column name="GEEMPSODTNASC" length="10"/>
+        </property>
+        <property name="geempsosexo" type="string">
+            <column name="GEEMPSOSEXO" length="1"/>
+        </property>
+        <property name="geempsoestciv" type="string">
+            <column name="GEEMPSOESTCIV" length="2"/>
+        </property>
+        <property name="geempsonacional" type="string">
+            <column name="GEEMPSONACIONAL" length="2"/>
+        </property>
+        <property name="geempsoanochega" type="integer">
+            <column name="GEEMPSOANOCHEGA"/>
+        </property>
+        <property name="geempsofuncao" type="string">
+            <column name="GEEMPSOFUNCAO" length="40"/>
+        </property>
+        <property name="geempsocpf" type="string">
+            <column name="GEEMPSOCPF" length="11" not-null="true"/>
+        </property>
+        <property name="geempsorg" type="string">
+            <column name="GEEMPSORG" length="15"/>
+        </property>
+        <property name="geempsorgorgao" type="string">
+            <column name="GEEMPSORGORGAO" length="20"/>
+        </property>
+        <property name="geempsonit" type="string">
+            <column name="GEEMPSONIT" length="11"/>
+        </property>
+        <property name="geempsopartic" type="float">
+            <column name="GEEMPSOPARTIC" precision="12"/>
+        </property>
+        <property name="geempsologra" type="string">
+            <column name="GEEMPSOLOGRA" length="80"/>
+        </property>
+        <property name="geempsono" type="string">
+            <column name="GEEMPSONO" length="20"/>
+        </property>
+        <property name="geempsocompl" type="string">
+            <column name="GEEMPSOCOMPL" length="20"/>
+        </property>
+        <property name="geempsobairro" type="string">
+            <column name="GEEMPSOBAIRRO" length="40"/>
+        </property>
+        <property name="geempsomunic" type="string">
+            <column name="GEEMPSOMUNIC" length="40"/>
+        </property>
+        <property name="geempsocep" type="string">
+            <column name="GEEMPSOCEP" length="8"/>
+        </property>
+        <property name="geempsotelddd" type="string">
+            <column name="GEEMPSOTELDDD" length="6"/>
+        </property>
+        <property name="geempsotelno" type="string">
+            <column name="GEEMPSOTELNO" length="8"/>
+        </property>
+        <property name="geempsoemail" type="string">
+            <column name="GEEMPSOEMAIL" length="60"/>
+        </property>
+        <property name="geempsoassina" type="string">
+            <column name="GEEMPSOASSINA" length="1" not-null="true"/>
+        </property>
+        <property name="geempsostatus" type="string">
+            <column name="GEEMPSOSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geempsovigdesde" type="date">
+            <column name="GEEMPSOVIGDESDE" length="10"/>
+        </property>
+        <property name="geempsovigate" type="date">
+            <column name="GEEMPSOVIGATE" length="10"/>
+        </property>
+        <property name="geempsoobs" type="string">
+            <column name="GEEMPSOOBS" length="500"/>
+        </property>
+        <many-to-one name="geTbUfByGeempsouf" class="com.testdb.data.GeTbUf">
+            <column name="GEEMPSOUF"/>
+        </many-to-one>
+        <many-to-one name="geTbUfByGeempsorguf" class="com.testdb.data.GeTbUf">
+            <column name="GEEMPSORGUF"/>
+        </many-to-one>
+        <many-to-one name="geTbQualificacaoSoc" class="com.testdb.data.GeTbQualificacaoSoc">
+            <column name="GEEMPSOQUALI"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEEMPSOIDEMPRESA" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

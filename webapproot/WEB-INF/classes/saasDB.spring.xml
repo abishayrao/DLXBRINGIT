@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+
+<!-- Generated 01/08/2013 14:21:09
+
+Configuration for 'saasDB' database service
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <bean 
+        id="saasDB"
+        class="com.saasdb.SaasDB"
+        scope="singleton"
+        lazy-init="true">
+        <property name="dataServiceManager">
+            <ref bean="saasDBDataService"/>
+        </property>
+        <property name="taskManager">
+            <ref bean="saasDBTaskMgr"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:saasDB.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean 
+        id="saasDBDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+        lazy-init="true">
+        <property name="driverClassName" value="${saasDB.driverClassName}"/>
+        <property name="url" value="${saasDB.connectionUrl}"/>
+        <property name="username" value="${saasDB.username}"/>
+        <property name="password" value="${saasDB.password}"/>
+    </bean>
+
+
+    <bean 
+        id="saasDBTxMgr" 
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+        lazy-init="true">
+        <property name="sessionFactory">
+            <ref bean="saasDBSessionFactory"/>
+        </property>
+    </bean>
+
+
+    <bean 
+        id="saasDBHibernateTemplate"
+        class="org.springframework.orm.hibernate3.HibernateTemplate"
+        lazy-init="true">
+        <property name="sessionFactory"> 
+            <ref bean="saasDBSessionFactory"/>
+        </property>
+    </bean>  
+
+
+    <bean 
+        id="saasDBSessionFactory" 
+        class="com.wavemaker.runtime.data.spring.ConfigurationAndSessionFactoryBean"
+        lazy-init="true">
+
+        <!-- A unique name for this SessionFactory's configuration -->
+        <property name="name" value="saasDB"/>
+        <property name="dataSource" ref="saasDBDataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${saasDB.dialect}</prop>
+                <prop key="hibernate.transaction.factory_class">
+                    org.hibernate.transaction.JDBCTransactionFactory
+                </prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                
+            </props> 
+        </property>
+
+        <property name="mappingResources">
+            <list>
+
+<value>com/saasdb/data/GeTbBcAgencias.hbm.xml</value>
+<value>com/saasdb/data/SiCliModulo.hbm.xml</value>
+<value>com/saasdb/data/GeSgGrupos.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpEnd.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpHisPgto.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposContrato.hbm.xml</value>
+<value>com/saasdb/data/SiSisModulo.hbm.xml</value>
+<value>com/saasdb/data/SiSisModCompoHelp.hbm.xml</value>
+<value>com/saasdb/data/SiSisVerComponentes.hbm.xml</value>
+<value>com/saasdb/data/GeSgUsuarios.hbm.xml</value>
+<value>com/saasdb/data/SiSisModTabelas.hbm.xml</value>
+<value>com/saasdb/data/SiCliEnd.hbm.xml</value>
+<value>com/saasdb/data/SiCliValores.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposEndereco.hbm.xml</value>
+<value>com/saasdb/data/SiSisModTabCampos.hbm.xml</value>
+<value>com/saasdb/data/GeTbCnaeGrupo.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposEmpresas.hbm.xml</value>
+<value>com/saasdb/data/GeTbMeiosConhecimento.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposDoc.hbm.xml</value>
+<value>com/saasdb/data/GeTbIndexCota.hbm.xml</value>
+<value>com/saasdb/data/GeTbNatJurClasse.hbm.xml</value>
+<value>com/saasdb/data/SiCliHisPgto.hbm.xml</value>
+<value>com/saasdb/data/GeSgGruXCampo.hbm.xml</value>
+<value>com/saasdb/data/GeTbMunicipios.hbm.xml</value>
+<value>com/saasdb/data/SiCliContatos.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpWeb.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposWeb.hbm.xml</value>
+<value>com/saasdb/data/SiCliContas.hbm.xml</value>
+<value>com/saasdb/data/GeSgGruXModulos.hbm.xml</value>
+<value>com/saasdb/data/SiSisModCampoHelp.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpContas.hbm.xml</value>
+<value>com/saasdb/data/SiClientes.hbm.xml</value>
+<value>com/saasdb/data/SiSisModTabIndex.hbm.xml</value>
+<value>com/saasdb/data/GeSgHistSenhas.hbm.xml</value>
+<value>com/saasdb/data/GeTbCnaeSubclasse.hbm.xml</value>
+<value>com/saasdb/data/SiSisModDescrDet.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpresas.hbm.xml</value>
+<value>com/saasdb/data/GeTbCnaeClasse.hbm.xml</value>
+<value>com/saasdb/data/SiSisModComponentes.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpDocsPf.hbm.xml</value>
+<value>com/saasdb/data/SiCliContratos.hbm.xml</value>
+<value>com/saasdb/data/GeTbCnaeDivisao.hbm.xml</value>
+<value>com/saasdb/data/SiSistema.hbm.xml</value>
+<value>com/saasdb/data/SiCliDocsPj.hbm.xml</value>
+<value>com/saasdb/data/GeTbQualificacaoSoc.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpCnaeSec.hbm.xml</value>
+<value>com/saasdb/data/SiCliDocsPf.hbm.xml</value>
+<value>com/saasdb/data/GeSgGruXCompo.hbm.xml</value>
+<value>com/saasdb/data/GeSgAuditoria.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpCentrocusto.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpLotacao.hbm.xml</value>
+<value>com/saasdb/data/SiCliWeb.hbm.xml</value>
+<value>com/saasdb/data/SiProduto.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposConta.hbm.xml</value>
+<value>com/saasdb/data/GeTbUf.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpSocios.hbm.xml</value>
+<value>com/saasdb/data/GeTbIndex.hbm.xml</value>
+<value>com/saasdb/data/SiCliTel.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpTel.hbm.xml</value>
+<value>com/saasdb/data/GeSgGruXEmpresa.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpContatosHist.hbm.xml</value>
+<value>com/saasdb/data/GeTbNatJuridica.hbm.xml</value>
+<value>com/saasdb/data/SiSisVersao.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpDocsPj.hbm.xml</value>
+<value>com/saasdb/data/GeTbBancos.hbm.xml</value>
+<value>com/saasdb/data/SiCliContatosHist.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposContato.hbm.xml</value>
+<value>com/saasdb/data/DiHlHelpUsu.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpContatos.hbm.xml</value>
+<value>com/saasdb/data/SiSisModCompCampos.hbm.xml</value>
+<value>com/saasdb/data/GeTbCnaeSecao.hbm.xml</value>
+<value>com/saasdb/data/GeCaEmpContratos.hbm.xml</value>
+<value>com/saasdb/data/GeTbTiposTelefone.hbm.xml</value>
+
+<value>com/saasdb/data/GeTbBcAgencias.ql.xml</value>
+<value>com/saasdb/data/app-queries.ql.xml</value>
+
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- the data service bean instance is injected into the service bean -->
+    <bean 
+        id="saasDBDataService" 
+        class="com.wavemaker.runtime.data.spring.SpringDataServiceManager"
+        lazy-init="true">
+        <constructor-arg>
+            <!-- the value of the "name" property of the SessionFactory -->
+            <value>saasDB</value>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="saasDBHibernateTemplate"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="saasDBTxMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="saasDBTaskMgr"/>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="useIndividualCRUDOperations" value="false"/>
+                <entry key="refreshEntities" value=""/> 
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <bean 
+        id="saasDBTaskMgr"
+        class="com.wavemaker.runtime.data.DefaultTaskManager"
+        lazy-init="true"/>
+
+    <bean class="com.wavemaker.runtime.service.events.EventWire"
+        lazy-init="false">
+        <property name="serviceWire" ref="saasDBServiceWire"/>
+        <property name="eventListener">
+            <bean class="com.wavemaker.runtime.data.DataServiceEventListener"/>
+        </property>
+    </bean>
+
+    <bean id="saasDBServiceWire"
+        class="com.wavemaker.runtime.service.reflect.ReflectServiceWire"
+        lazy-init="false" scope="singleton">
+        <property name="serviceId" value="saasDB"/>
+        <property name="serviceType" ref="DataService"/>
+    </bean>
+
+</beans>

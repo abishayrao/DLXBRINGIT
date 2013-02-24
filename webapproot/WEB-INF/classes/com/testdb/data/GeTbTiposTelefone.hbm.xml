@@ -1,0 +1,87 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbTiposTelefone" table="ge_tb_tipos_telefone" dynamic-insert="false" dynamic-update="false">
+        <id name="getipotelid" type="integer">
+            <column name="GETIPOTELID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipotelcod" type="string">
+            <column name="GETIPOTELCOD" length="5" not-null="true"/>
+        </property>
+        <property name="getipoteldescr" type="string">
+            <column name="GETIPOTELDESCR" length="50" not-null="true"/>
+        </property>
+        <property name="getipotelstatus" type="string">
+            <column name="GETIPOTELSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="getipotelinivig" type="date">
+            <column name="GETIPOTELINIVIG" length="10"/>
+        </property>
+        <property name="getipotelfimvig" type="date">
+            <column name="GETIPOTELFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GETIPOTELCLIID" not-null="true"/>
+        </many-to-one>
+        <set name="stEpFabricContatosesForStfacontelatpid" inverse="true" cascade="">
+            <key>
+                <column name="STFACONTELATPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricContatos"/>
+        </set>
+        <set name="siCliContatosesForSiclicontelbtpid" inverse="true" cascade="">
+            <key>
+                <column name="SICLICONTELBTPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliContatos"/>
+        </set>
+        <set name="stEpFabricWebs" inverse="true" cascade="">
+            <key>
+                <column name="STFAWEBTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricWeb"/>
+        </set>
+        <set name="stEpFabricContatosesForStfacontelbtpid" inverse="true" cascade="">
+            <key>
+                <column name="STFACONTELBTPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricContatos"/>
+        </set>
+        <set name="geCaEmpContatosesForGeempcontelbtpid" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPCONTELBTPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpContatos"/>
+        </set>
+        <set name="stEpFabricTels" inverse="true" cascade="">
+            <key>
+                <column name="STFATELTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricTel"/>
+        </set>
+        <set name="siCliContatosesForSiclicontelatpid" inverse="true" cascade="">
+            <key>
+                <column name="SICLICONTELATPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliContatos"/>
+        </set>
+        <set name="geCaEmpContatosesForGeempcontelatpid" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPCONTELATPID"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpContatos"/>
+        </set>
+        <set name="siCliTels" inverse="true" cascade="">
+            <key>
+                <column name="SICLITELTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliTel"/>
+        </set>
+        <set name="geCaEmpTels" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPTELTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpTel"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeCaEmpDocsPf" table="ge_ca_emp_docs_pf" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempdpfempresaid" type="integer">
+            <column name="geempdpfempresaid"/>
+            <generator class="foreign"/>
+        </id>
+        <property name="geempdpfcpf" type="string">
+            <column name="geempdpfcpf" length="11" not-null="true"/>
+        </property>
+        <property name="geempdpfrg" type="string">
+            <column name="geempdpfrg" length="15"/>
+        </property>
+        <property name="geempdpfrgorgao" type="string">
+            <column name="geempdpfrgorgao" length="20"/>
+        </property>
+        <property name="geempdpfregprof" type="string">
+            <column name="geempdpfregprof" length="20"/>
+        </property>
+        <many-to-one name="geTbUfByGeempdpfrguf" class="com.postgresdb.data.GeTbUf">
+            <column name="geempdpfrguf"/>
+        </many-to-one>
+        <many-to-one name="geTbUfByGeempdpfregprofuf" class="com.postgresdb.data.GeTbUf">
+            <column name="geempdpfregprofuf"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiSisModCompoHelp" table="si_sis_mod_compo_help" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="simcohid" type="integer">
+            <column name="simcohid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="simcohlingua" type="string">
+            <column name="simcohlingua" length="10" not-null="true"/>
+        </property>
+        <property name="simcohdescricao" type="string">
+            <column name="simcohdescricao"/>
+        </property>
+        <many-to-one name="siSisModComponentes" class="com.postgresdb.data.SiSisModComponentes">
+            <column name="simcohidcompo" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

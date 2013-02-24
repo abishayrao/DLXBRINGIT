@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.DiHlHelpUsu" table="di_hl_help_usu" dynamic-insert="false" dynamic-update="false">
+        <id name="dihlhluid" type="integer">
+            <column name="DIHLHLUID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="dihlhludescr" type="string">
+            <column name="DIHLHLUDescr" length="65535"/>
+        </property>
+        <many-to-one name="geSgUsuarios" class="com.testdb.data.GeSgUsuarios">
+            <column name="DIHLHLUIDUsu" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siSisModComponentes" class="com.testdb.data.SiSisModComponentes">
+            <column name="DIHLHLUIDCompo" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

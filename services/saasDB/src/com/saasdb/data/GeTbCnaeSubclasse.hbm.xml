@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeTbCnaeSubclasse" table="ge_tb_cnae_subclasse" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="gecnaeecod" type="string">
+            <column name="gecnaeecod" length="7"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="gecnaeenome" type="string">
+            <column name="gecnaeenome" length="100" not-null="true"/>
+        </property>
+        <many-to-one name="geTbCnaeClasse" class="com.saasdb.data.GeTbCnaeClasse">
+            <column name="gecnaeeclasse" length="5" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpCnaeSecs" inverse="true" cascade="">
+            <key>
+                <column name="geempcnscnaeid" length="7"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpCnaeSec"/>
+        </set>
+        <set name="geCaEmpLotacaos" inverse="true" cascade="">
+            <key>
+                <column name="geemplotcnaeid" length="7"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpLotacao"/>
+        </set>
+        <set name="geCaEmpDocsPjs" inverse="true" cascade="">
+            <key>
+                <column name="geempdpjcnaeid" length="7"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpDocsPj"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiCliContas" table="si_cli_contas" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siclictsid" type="integer">
+            <column name="siclictsid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclictsagencia" type="string">
+            <column name="siclictsagencia" length="5" not-null="true"/>
+        </property>
+        <property name="siclictsagdv" type="string">
+            <column name="siclictsagdv" length="1"/>
+        </property>
+        <property name="siclictsconta" type="string">
+            <column name="siclictsconta" length="10"/>
+        </property>
+        <property name="siclictsctdv" type="string">
+            <column name="siclictsctdv" length="1"/>
+        </property>
+        <property name="siclictsstatus" type="string">
+            <column name="siclictsstatus" length="1" not-null="true"/>
+        </property>
+        <property name="siclictsinivig" type="date">
+            <column name="siclictsinivig" length="13"/>
+        </property>
+        <property name="siclictsfimvig" type="date">
+            <column name="siclictsfimvig" length="13"/>
+        </property>
+        <many-to-one name="geTbBancos" class="com.saasdb.data.GeTbBancos">
+            <column name="siclictsbancoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.saasdb.data.SiClientes">
+            <column name="siclictsclienteid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposConta" class="com.saasdb.data.GeTbTiposConta">
+            <column name="siclictstipo" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

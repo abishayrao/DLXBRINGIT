@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbTiposWeb" table="ge_tb_tipos_web" dynamic-insert="false" dynamic-update="false">
+        <id name="getipowebid" type="integer">
+            <column name="GETIPOWEBID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipowebcod" type="string">
+            <column name="GETIPOWEBCOD" length="5" not-null="true"/>
+        </property>
+        <property name="getipowebdescr" type="string">
+            <column name="GETIPOWEBDESCR" length="50" not-null="true"/>
+        </property>
+        <property name="getipowebstatus" type="string">
+            <column name="GETIPOWEBSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="getipowebinivig" type="date">
+            <column name="GETIPOWEBINIVIG" length="10"/>
+        </property>
+        <property name="getipowebfimvig" type="date">
+            <column name="GETIPOWEBFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GETIPOWEBCLIID" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpWebs" inverse="true" cascade="">
+            <key>
+                <column name="GEEMPWEBTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeCaEmpWeb"/>
+        </set>
+        <set name="siCliWebs" inverse="true" cascade="">
+            <key>
+                <column name="SICLIWEBTIPOID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiCliWeb"/>
+        </set>
+    </class>
+</hibernate-mapping>

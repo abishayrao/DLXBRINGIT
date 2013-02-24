@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiCliContratos" table="si_cli_contratos" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siclicrid" type="integer">
+            <column name="siclicrid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclicrdoc" type="binary">
+            <column name="siclicrdoc"/>
+        </property>
+        <property name="siclicrstatus" type="string">
+            <column name="siclicrstatus" length="1" not-null="true"/>
+        </property>
+        <property name="siclicrinivig" type="date">
+            <column name="siclicrinivig" length="13"/>
+        </property>
+        <property name="siclicrfimvig" type="date">
+            <column name="siclicrfimvig" length="13"/>
+        </property>
+        <many-to-one name="geTbTiposContrato" class="com.postgresdb.data.GeTbTiposContrato">
+            <column name="siclicrtipoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="siclicrclienteid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

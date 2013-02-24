@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbTiposContrato" table="ge_tb_tipos_contrato" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoctrid" type="integer">
+            <column name="GETIPOCTRID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoctrcod" type="string">
+            <column name="GETIPOCTRCOD" length="5" not-null="true"/>
+        </property>
+        <property name="getipoctrdescr" type="string">
+            <column name="GETIPOCTRDESCR" length="50" not-null="true"/>
+        </property>
+        <property name="getipoctrstatus" type="string">
+            <column name="GETIPOCTRSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="getipoctrinivig" type="date">
+            <column name="GETIPOCTRINIVIG" length="10"/>
+        </property>
+        <property name="getipoctrfimvig" type="date">
+            <column name="GETIPOCTRFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GETIPOCTRCLIID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

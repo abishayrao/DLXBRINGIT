@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.StEpCategFabr" table="st_ep_categ_fabr" dynamic-insert="false" dynamic-update="false">
+        <id name="stepcfid" type="integer">
+            <column name="STEPCFID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="stepcfcod" type="string">
+            <column name="STEPCFCOD" length="5" not-null="true"/>
+        </property>
+        <property name="stepcfnome" type="string">
+            <column name="STEPCFNOME" length="80" not-null="true"/>
+        </property>
+        <property name="stepcfstatus" type="string">
+            <column name="STEPCFSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="stepcfinivig" type="date">
+            <column name="STEPCFINIVIG" length="10"/>
+        </property>
+        <property name="stepcffimvig" type="date">
+            <column name="STEPCFFIMVIG" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="STEPCFCLIENTEID" not-null="true"/>
+        </many-to-one>
+        <set name="stEpFabricanteses" inverse="true" cascade="">
+            <key>
+                <column name="STEPFACATEGORIAID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.StEpFabricantes"/>
+        </set>
+    </class>
+</hibernate-mapping>

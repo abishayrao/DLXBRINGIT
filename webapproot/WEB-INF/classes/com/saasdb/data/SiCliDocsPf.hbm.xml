@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiCliDocsPf" table="si_cli_docs_pf" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siclidpfclienteid" type="integer">
+            <column name="siclidpfclienteid"/>
+            <generator class="foreign"/>
+        </id>
+        <property name="siclidpfcpf" type="string">
+            <column name="siclidpfcpf" length="11" not-null="true"/>
+        </property>
+        <property name="siclidpfrg" type="string">
+            <column name="siclidpfrg" length="15"/>
+        </property>
+        <property name="siclidpfrgorgao" type="string">
+            <column name="siclidpfrgorgao" length="20"/>
+        </property>
+        <property name="siclidpfregprof" type="string">
+            <column name="siclidpfregprof" length="20"/>
+        </property>
+        <many-to-one name="geTbUf" class="com.saasdb.data.GeTbUf">
+            <column name="siclidpfrguf"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

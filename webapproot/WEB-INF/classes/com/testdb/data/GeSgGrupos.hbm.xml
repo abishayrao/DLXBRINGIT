@@ -1,0 +1,54 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeSgGrupos" table="ge_sg_grupos" dynamic-insert="false" dynamic-update="false">
+        <id name="gesggrpId" type="integer">
+            <column name="GESGGrpID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesggrpNome" type="string">
+            <column name="GESGGrpNome" length="60" not-null="true"/>
+        </property>
+        <property name="gesggrpStatus" type="string">
+            <column name="GESGGrpStatus" length="1"/>
+        </property>
+        <property name="gesggrpIniVig" type="date">
+            <column name="GESGGrpIniVig" length="10"/>
+        </property>
+        <property name="gesggrpFimVig" type="date">
+            <column name="GESGGrpFimVig" length="10"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="GESGGrpCliID" not-null="true"/>
+        </many-to-one>
+        <set name="geSgGruXCampos" inverse="true" cascade="">
+            <key>
+                <column name="GESGGXAIDGrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgGruXCampo"/>
+        </set>
+        <set name="geSgGruXModuloses" inverse="true" cascade="">
+            <key>
+                <column name="GESGGXMIDGrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgGruXModulos"/>
+        </set>
+        <set name="geSgUsuarioses" inverse="true" cascade="">
+            <key>
+                <column name="GESGUsuIDGrupo" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgUsuarios"/>
+        </set>
+        <set name="geSgGruXEmpresas" inverse="true" cascade="">
+            <key>
+                <column name="GESGGXEIDGrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgGruXEmpresa"/>
+        </set>
+        <set name="geSgGruXCompos" inverse="true" cascade="">
+            <key>
+                <column name="GESGGXCIDGrp" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgGruXCompo"/>
+        </set>
+    </class>
+</hibernate-mapping>

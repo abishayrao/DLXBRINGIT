@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiSisModDescrDet" table="si_sis_mod_descr_det" dynamic-insert="false" dynamic-update="false">
+        <id name="simoddid" type="integer">
+            <column name="SIMODDID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="simoddnome" type="string">
+            <column name="SIMODDNOME" length="30" not-null="true"/>
+        </property>
+        <property name="simodddescrdet" type="string">
+            <column name="SIMODDDESCRDET" length="65535"/>
+        </property>
+        <many-to-one name="siSisModulo" class="com.testdb.data.SiSisModulo">
+            <column name="SIMODDIDMODULO" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

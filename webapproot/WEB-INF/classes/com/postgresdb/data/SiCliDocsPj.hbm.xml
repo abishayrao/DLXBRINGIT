@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.SiCliDocsPj" table="si_cli_docs_pj" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="siclidpjclienteid" type="integer">
+            <column name="siclidpjclienteid"/>
+            <generator class="foreign"/>
+        </id>
+        <property name="siclidpjcnpj" type="string">
+            <column name="siclidpjcnpj" length="14" not-null="true"/>
+        </property>
+        <property name="siclidpjie" type="string">
+            <column name="siclidpjie" length="20"/>
+        </property>
+        <property name="siclidpjiedata" type="date">
+            <column name="siclidpjiedata" length="13"/>
+        </property>
+        <property name="siclidpjim" type="string">
+            <column name="siclidpjim" length="20"/>
+        </property>
+    </class>
+</hibernate-mapping>

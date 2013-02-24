@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliEnd" table="si_cli_end" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliendid" type="integer">
+            <column name="SICLIENDID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicliendlogra" type="string">
+            <column name="SICLIENDLOGRA" length="80"/>
+        </property>
+        <property name="sicliendno" type="string">
+            <column name="SICLIENDNO" length="20"/>
+        </property>
+        <property name="sicliendcompl" type="string">
+            <column name="SICLIENDCOMPL" length="20"/>
+        </property>
+        <property name="sicliendbairro" type="string">
+            <column name="SICLIENDBAIRRO" length="30"/>
+        </property>
+        <property name="sicliendmunic" type="string">
+            <column name="SICLIENDMUNIC" length="30"/>
+        </property>
+        <property name="sicliendcep" type="string">
+            <column name="SICLIENDCEP" length="8"/>
+        </property>
+        <many-to-one name="geTbTiposEndereco" class="com.testdb.data.GeTbTiposEndereco">
+            <column name="SICLIENDTIPOID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbUf" class="com.testdb.data.GeTbUf">
+            <column name="SICLIENDUF"/>
+        </many-to-one>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="SICLIENDCLIENTEID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpContas" table="ge_ca_emp_contas" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempctsid" type="integer">
+            <column name="geempctsid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempctsagencia" type="string">
+            <column name="geempctsagencia" length="5" not-null="true"/>
+        </property>
+        <property name="geempctsagdv" type="string">
+            <column name="geempctsagdv" length="1"/>
+        </property>
+        <property name="geempctsconta" type="string">
+            <column name="geempctsconta" length="10"/>
+        </property>
+        <property name="geempctsctdv" type="string">
+            <column name="geempctsctdv" length="1"/>
+        </property>
+        <property name="geempctsgerente" type="string">
+            <column name="geempctsgerente" length="60"/>
+        </property>
+        <property name="geempctsgeremail" type="string">
+            <column name="geempctsgeremail" length="60"/>
+        </property>
+        <property name="geempctsstatus" type="string">
+            <column name="geempctsstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geempctsinivig" type="date">
+            <column name="geempctsinivig" length="13"/>
+        </property>
+        <property name="geempctsfimvig" type="date">
+            <column name="geempctsfimvig" length="13"/>
+        </property>
+        <many-to-one name="geTbBancos" class="com.saasdb.data.GeTbBancos">
+            <column name="geempctsbancoid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposConta" class="com.saasdb.data.GeTbTiposConta">
+            <column name="geempctstipo" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.saasdb.data.GeCaEmpresas">
+            <column name="geempctsempresaid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

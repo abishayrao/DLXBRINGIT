@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpDocsPf" table="ge_ca_emp_docs_pf" dynamic-insert="false" dynamic-update="false">
+        <id name="geempdpfempresaid" type="integer">
+            <column name="GEEMPDPFEMPRESAID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="geempdpfcpf" type="string">
+            <column name="GEEMPDPFCPF" length="11" not-null="true"/>
+        </property>
+        <property name="geempdpfrg" type="string">
+            <column name="GEEMPDPFRG" length="15"/>
+        </property>
+        <property name="geempdpfrgorgao" type="string">
+            <column name="GEEMPDPFRGORGAO" length="20"/>
+        </property>
+        <property name="geempdpfregprof" type="string">
+            <column name="GEEMPDPFREGPROF" length="20"/>
+        </property>
+        <many-to-one
+            name="geCaEmpresas"
+            class="com.testdb.data.GeCaEmpresas"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="GEEMPDPFEMPRESAID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbUfByGeempdpfrguf" class="com.testdb.data.GeTbUf">
+            <column name="GEEMPDPFRGUF"/>
+        </many-to-one>
+        <many-to-one name="geTbUfByGeempdpfregprofuf" class="com.testdb.data.GeTbUf">
+            <column name="GEEMPDPFREGPROFUF"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

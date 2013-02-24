@@ -1,0 +1,60 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeSgUsuarios" table="ge_sg_usuarios" dynamic-insert="false" dynamic-update="false">
+        <id name="gesgusuId" type="integer">
+            <column name="GESGUsuID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesgusuLogin" type="string">
+            <column name="GESGUsuLogin" length="30" not-null="true"/>
+        </property>
+        <property name="gesgusuSenha" type="string">
+            <column name="GESGUsuSenha" not-null="true"/>
+        </property>
+        <property name="gesgusuExpira" type="string">
+            <column name="GESGUsuExpira" length="1"/>
+        </property>
+        <property name="gesgusuDtSenha" type="date">
+            <column name="GESGUsuDtSenha" length="10"/>
+        </property>
+        <property name="gesgusuFunId" type="integer">
+            <column name="GESGUsuFunID"/>
+        </property>
+        <property name="gesgusuNome" type="string">
+            <column name="GESGUsuNome" length="60"/>
+        </property>
+        <property name="gesgusuAdmin" type="string">
+            <column name="GESGUsuAdmin" length="1"/>
+        </property>
+        <property name="gesgusuStatus" type="string">
+            <column name="GESGUsuStatus" length="1"/>
+        </property>
+        <property name="gesgusuIniVig" type="date">
+            <column name="GESGUsuIniVig" length="10"/>
+        </property>
+        <property name="gesgusuFimVig" type="date">
+            <column name="GESGUsuFimVig" length="10"/>
+        </property>
+        <many-to-one name="geSgGrupos" class="com.testdb.data.GeSgGrupos">
+            <column name="GESGUsuIDGrupo" not-null="true"/>
+        </many-to-one>
+        <set name="diHlHelpUsus" inverse="true" cascade="">
+            <key>
+                <column name="DIHLHLUIDUsu" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.DiHlHelpUsu"/>
+        </set>
+        <set name="geSgAuditorias" inverse="true" cascade="">
+            <key>
+                <column name="GESGAudUsuID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgAuditoria"/>
+        </set>
+        <set name="geSgHistSenhases" inverse="true" cascade="">
+            <key>
+                <column name="GESGHSenhaUsuID" not-null="true"/>
+            </key>
+            <one-to-many class="com.testdb.data.GeSgHistSenhas"/>
+        </set>
+    </class>
+</hibernate-mapping>

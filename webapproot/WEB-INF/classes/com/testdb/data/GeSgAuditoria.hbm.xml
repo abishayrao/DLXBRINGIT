@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeSgAuditoria" table="ge_sg_auditoria" dynamic-insert="false" dynamic-update="false">
+        <id name="gesgaudId" type="integer">
+            <column name="GESGAudID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gesgaudCompoId" type="integer">
+            <column name="GESGAudCompoID" not-null="true"/>
+        </property>
+        <property name="gesgaudData" type="integer">
+            <column name="GESGAudData" not-null="true"/>
+        </property>
+        <property name="gesgaudAcao" type="string">
+            <column name="GESGAudAcao" length="1" not-null="true"/>
+        </property>
+        <property name="gesgaudChave" type="string">
+            <column name="GESGAudChave" length="40"/>
+        </property>
+        <property name="gesgaudInformacao" type="string">
+            <column name="GESGAudInformacao" length="200"/>
+        </property>
+        <many-to-one name="geSgUsuarios" class="com.testdb.data.GeSgUsuarios">
+            <column name="GESGAudUsuID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeCaEmpCnaeSec" table="ge_ca_emp_cnae_sec" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geempcnsid" type="integer">
+            <column name="geempcnsid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempcnsstatus" type="string">
+            <column name="geempcnsstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geempcnsvigdesde" type="date">
+            <column name="geempcnsvigdesde" length="13"/>
+        </property>
+        <property name="geempcnsvigate" type="date">
+            <column name="geempcnsvigate" length="13"/>
+        </property>
+        <many-to-one name="geTbCnaeSubclasse" class="com.postgresdb.data.GeTbCnaeSubclasse">
+            <column name="geempcnscnaeid" length="7"/>
+        </many-to-one>
+        <many-to-one name="geCaEmpresas" class="com.postgresdb.data.GeCaEmpresas">
+            <column name="geempcnsempresaid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

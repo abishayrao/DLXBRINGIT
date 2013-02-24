@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.StEpFabricContatos" table="st_ep_fabric_contatos" dynamic-insert="false" dynamic-update="false">
+        <id name="stfaconid" type="integer">
+            <column name="STFACONID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="stfaconnome" type="string">
+            <column name="STFACONNOME" length="30" not-null="true"/>
+        </property>
+        <property name="stfaconcargo" type="string">
+            <column name="STFACONCARGO" length="30"/>
+        </property>
+        <property name="stfacondtnasc" type="date">
+            <column name="STFACONDTNASC" length="10"/>
+        </property>
+        <property name="stfaconteladdd" type="string">
+            <column name="STFACONTELADDD" length="4"/>
+        </property>
+        <property name="stfacontelano" type="string">
+            <column name="STFACONTELANO" length="9"/>
+        </property>
+        <property name="stfaconemail" type="string">
+            <column name="STFACONEMAIL" length="50"/>
+        </property>
+        <property name="stfacontelbddd" type="string">
+            <column name="STFACONTELBDDD" length="4"/>
+        </property>
+        <property name="stfacontelbno" type="string">
+            <column name="STFACONTELBNO" length="9"/>
+        </property>
+        <many-to-one name="stEpFabricantes" class="com.testdb.data.StEpFabricantes">
+            <column name="STFACONFABRICANTEID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefoneByStfacontelatpid" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="STFACONTELATPID"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposTelefoneByStfacontelbtpid" class="com.testdb.data.GeTbTiposTelefone">
+            <column name="STFACONTELBTPID"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

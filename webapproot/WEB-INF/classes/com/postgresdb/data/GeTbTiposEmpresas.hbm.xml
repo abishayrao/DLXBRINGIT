@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbTiposEmpresas" table="ge_tb_tipos_empresas" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="getipoempid" type="integer">
+            <column name="getipoempid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="getipoempcod" type="string">
+            <column name="getipoempcod" length="5" not-null="true"/>
+        </property>
+        <property name="getipoempdescr" type="string">
+            <column name="getipoempdescr" length="50" not-null="true"/>
+        </property>
+        <property name="getipoempstatus" type="string">
+            <column name="getipoempstatus" length="1" not-null="true"/>
+        </property>
+        <property name="getipoempinivig" type="date">
+            <column name="getipoempinivig" length="13"/>
+        </property>
+        <property name="getipoempfimvig" type="date">
+            <column name="getipoempfimvig" length="13"/>
+        </property>
+        <many-to-one name="siClientes" class="com.postgresdb.data.SiClientes">
+            <column name="getipoempcliid" not-null="true"/>
+        </many-to-one>
+        <set name="geCaEmpresases" inverse="true" cascade="">
+            <key>
+                <column name="gecaemptipoid"/>
+            </key>
+            <one-to-many class="com.postgresdb.data.GeCaEmpresas"/>
+        </set>
+    </class>
+</hibernate-mapping>

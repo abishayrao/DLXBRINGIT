@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeTbMeiosConhecimento" table="ge_tb_meios_conhecimento" dynamic-insert="false" dynamic-update="false">
+        <id name="gemeioconcid" type="integer">
+            <column name="GEMEIOCONCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="gemeioconcod" type="string">
+            <column name="GEMEIOCONCOD" length="5" not-null="true"/>
+        </property>
+        <property name="gemeiocondescr" type="string">
+            <column name="GEMEIOCONDESCR" length="50" not-null="true"/>
+        </property>
+        <set name="siClienteses" inverse="true" cascade="">
+            <key>
+                <column name="SICLIIDMEIOCONH"/>
+            </key>
+            <one-to-many class="com.testdb.data.SiClientes"/>
+        </set>
+    </class>
+</hibernate-mapping>

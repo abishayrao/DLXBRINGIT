@@ -1,0 +1,57 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.GeCaEmpHisPgto" table="ge_ca_emp_his_pgto" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geemphpid" type="integer">
+            <column name="geemphpid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geemphptipocobr" type="string">
+            <column name="geemphptipocobr" length="1" not-null="true"/>
+        </property>
+        <property name="geemphpnodoc" type="string">
+            <column name="geemphpnodoc" length="20" not-null="true"/>
+        </property>
+        <property name="geemphpparcela" type="string">
+            <column name="geemphpparcela" length="2" not-null="true"/>
+        </property>
+        <property name="geemphpdtvenc" type="date">
+            <column name="geemphpdtvenc" length="13" not-null="true"/>
+        </property>
+        <property name="geemphpdtpgto" type="date">
+            <column name="geemphpdtpgto" length="13"/>
+        </property>
+        <property name="geemphpdesctipo" type="string">
+            <column name="geemphpdesctipo" length="1"/>
+        </property>
+        <property name="geemphpdescval" type="double">
+            <column name="geemphpdescval" precision="17"/>
+        </property>
+        <property name="geemphpmultatipo" type="string">
+            <column name="geemphpmultatipo" length="1"/>
+        </property>
+        <property name="geemphpmultaval" type="double">
+            <column name="geemphpmultaval" precision="17"/>
+        </property>
+        <property name="geemphpvalapagar" type="double">
+            <column name="geemphpvalapagar" precision="17" not-null="true"/>
+        </property>
+        <property name="geemphpimpostos" type="double">
+            <column name="geemphpimpostos" precision="17"/>
+        </property>
+        <property name="geemphpvalpago" type="double">
+            <column name="geemphpvalpago" precision="17"/>
+        </property>
+        <property name="geemphpstatus" type="string">
+            <column name="geemphpstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geemphpcartorio" type="string">
+            <column name="geemphpcartorio" length="1"/>
+        </property>
+        <property name="geemphpobs" type="string">
+            <column name="geemphpobs" length="500"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.saasdb.data.GeCaEmpresas">
+            <column name="geemphpidempresa" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpDocsPj" table="ge_ca_emp_docs_pj" dynamic-insert="false" dynamic-update="false">
+        <id name="geempdpjempresaid" type="integer">
+            <column name="GEEMPDPJEMPRESAID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="geempdpjtipodoc" type="string">
+            <column name="GEEMPDPJTIPODOC" length="1" not-null="true"/>
+        </property>
+        <property name="geempdpjdoc" type="string">
+            <column name="GEEMPDPJDOC" length="14" not-null="true"/>
+        </property>
+        <property name="geempdpjie" type="string">
+            <column name="GEEMPDPJIE" length="20"/>
+        </property>
+        <property name="geempdpjiedata" type="date">
+            <column name="GEEMPDPJIEDATA" length="10"/>
+        </property>
+        <property name="geempdpjim" type="string">
+            <column name="GEEMPDPJIM" length="20"/>
+        </property>
+        <property name="geempdpjimdata" type="date">
+            <column name="GEEMPDPJIMDATA" length="10"/>
+        </property>
+        <many-to-one name="geTbCnaeSubclasse" class="com.testdb.data.GeTbCnaeSubclasse">
+            <column name="GEEMPDPJCNAEID" length="7"/>
+        </many-to-one>
+        <many-to-one
+            name="geCaEmpresas"
+            class="com.testdb.data.GeCaEmpresas"
+            update="false"
+            insert="false"
+            fetch="select">
+            <column name="GEEMPDPJEMPRESAID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

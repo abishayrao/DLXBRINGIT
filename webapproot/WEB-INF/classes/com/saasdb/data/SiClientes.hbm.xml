@@ -1,0 +1,189 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.saasdb.data.SiClientes" table="si_clientes" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="sicliid" type="integer">
+            <column name="sicliid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclipfpj" type="string">
+            <column name="siclipfpj" length="1" not-null="true"/>
+        </property>
+        <property name="siclicod" type="string">
+            <column name="siclicod" length="14" not-null="true"/>
+        </property>
+        <property name="siclinomegr" type="string">
+            <column name="siclinomegr" length="60" not-null="true"/>
+        </property>
+        <property name="siclinomepq" type="string">
+            <column name="siclinomepq" length="30"/>
+        </property>
+        <property name="siclistatus" type="string">
+            <column name="siclistatus" length="1" not-null="true"/>
+        </property>
+        <property name="sicliinivig" type="date">
+            <column name="sicliinivig" length="13"/>
+        </property>
+        <property name="siclifimvig" type="date">
+            <column name="siclifimvig" length="13"/>
+        </property>
+        <property name="sicliindicacao" type="integer">
+            <column name="sicliindicacao"/>
+        </property>
+        <property name="siclilingua" type="string">
+            <column name="siclilingua" length="10"/>
+        </property>
+        <many-to-one name="geTbMeiosConhecimento" class="com.saasdb.data.GeTbMeiosConhecimento">
+            <column name="sicliidmeioconh"/>
+        </many-to-one>
+        <set name="siCliContatoses" inverse="true" cascade="">
+            <key>
+                <column name="sicliconclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContatos"/>
+        </set>
+        <set name="geTbMunicipioses" inverse="true" cascade="">
+            <key>
+                <column name="gemunicclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbMunicipios"/>
+        </set>
+        <set name="geSgGruposes" inverse="true" cascade="">
+            <key>
+                <column name="gesggrpcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeSgGrupos"/>
+        </set>
+        <set name="geTbNatJurClasses" inverse="true" cascade="">
+            <key>
+                <column name="genajuccliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbNatJurClasse"/>
+        </set>
+        <set name="siCliEnds" inverse="true" cascade="">
+            <key>
+                <column name="sicliendclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliEnd"/>
+        </set>
+        <set name="geTbTiposDocs" inverse="true" cascade="">
+            <key>
+                <column name="getipodoccliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposDoc"/>
+        </set>
+        <set name="siCliTels" inverse="true" cascade="">
+            <key>
+                <column name="siclitelclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliTel"/>
+        </set>
+        <set name="siCliValoreses" inverse="true" cascade="">
+            <key>
+                <column name="sicvaidcliente" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliValores"/>
+        </set>
+        <set name="geTbTiposWebs" inverse="true" cascade="">
+            <key>
+                <column name="getipowebcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposWeb"/>
+        </set>
+        <set name="siCliWebs" inverse="true" cascade="">
+            <key>
+                <column name="sicliwebclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliWeb"/>
+        </set>
+        <set name="geTbTiposEnderecos" inverse="true" cascade="">
+            <key>
+                <column name="getipoendcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposEndereco"/>
+        </set>
+        <set name="geTbTiposEmpresases" inverse="true" cascade="">
+            <key>
+                <column name="getipoempcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposEmpresas"/>
+        </set>
+        <set name="geTbIndexes" inverse="true" cascade="">
+            <key>
+                <column name="geindexcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbIndex"/>
+        </set>
+        <set name="geTbTiposContratos" inverse="true" cascade="">
+            <key>
+                <column name="getipoctrcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposContrato"/>
+        </set>
+        <set name="siCliHisPgtos" inverse="true" cascade="">
+            <key>
+                <column name="sichpidcliente" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliHisPgto"/>
+        </set>
+        <set name="geTbTiposContatos" inverse="true" cascade="">
+            <key>
+                <column name="getipoctocliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposContato"/>
+        </set>
+        <set name="geTbUfs" inverse="true" cascade="">
+            <key>
+                <column name="geufclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbUf"/>
+        </set>
+        <set name="geTbBancoses" inverse="true" cascade="">
+            <key>
+                <column name="gebancoclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbBancos"/>
+        </set>
+        <set name="geCaEmpresases" inverse="true" cascade="">
+            <key>
+                <column name="gecaempcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeCaEmpresas"/>
+        </set>
+        <set name="geTbTiposTelefones" inverse="true" cascade="">
+            <key>
+                <column name="getipotelcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposTelefone"/>
+        </set>
+        <set name="siCliModulos" inverse="true" cascade="">
+            <key>
+                <column name="sicxmidcliente" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliModulo"/>
+        </set>
+        <set name="geTbTiposContas" inverse="true" cascade="">
+            <key>
+                <column name="getipoconcliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbTiposConta"/>
+        </set>
+        <set name="geTbQualificacaoSocs" inverse="true" cascade="">
+            <key>
+                <column name="gequalsoccliid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.GeTbQualificacaoSoc"/>
+        </set>
+        <set name="siCliContratoses" inverse="true" cascade="">
+            <key>
+                <column name="siclicrclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContratos"/>
+        </set>
+        <set name="siCliContases" inverse="true" cascade="">
+            <key>
+                <column name="siclictsclienteid" not-null="true"/>
+            </key>
+            <one-to-many class="com.saasdb.data.SiCliContas"/>
+        </set>
+    </class>
+</hibernate-mapping>

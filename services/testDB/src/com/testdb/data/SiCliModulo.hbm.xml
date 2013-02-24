@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliModulo" table="si_cli_modulo" dynamic-insert="false" dynamic-update="false">
+        <id name="sicxmid" type="integer">
+            <column name="SICXMID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="sicxmetapa" type="string">
+            <column name="SICXMETAPA" length="1" not-null="true"/>
+        </property>
+        <property name="sicxmdatalimite" type="string">
+            <column name="SICXMDATALIMITE" length="1" not-null="true"/>
+        </property>
+        <property name="sicxmstatus" type="string">
+            <column name="SICXMSTATUS" length="1" not-null="true"/>
+        </property>
+        <many-to-one name="siClientes" class="com.testdb.data.SiClientes">
+            <column name="SICXMIDCLIENTE" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="siSisModulo" class="com.testdb.data.SiSisModulo">
+            <column name="SICXMIDMODULO" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

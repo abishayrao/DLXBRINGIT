@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.SiCliContatosHist" table="si_cli_contatos_hist" dynamic-insert="false" dynamic-update="false">
+        <id name="siclihcid" type="integer">
+            <column name="SICLIHCID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="siclihcdata" type="date">
+            <column name="SICLIHCDATA" length="10" not-null="true"/>
+        </property>
+        <property name="siclihchora" type="time">
+            <column name="SICLIHCHORA" length="8" not-null="true"/>
+        </property>
+        <property name="siclihcatendente" type="string">
+            <column name="SICLIHCATENDENTE" length="30"/>
+        </property>
+        <property name="siclihchistorico" type="string">
+            <column name="SICLIHCHISTORICO" length="2000"/>
+        </property>
+        <many-to-one name="siCliContatos" class="com.testdb.data.SiCliContatos">
+            <column name="SICLIHCCONTATOID" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="geTbTiposContato" class="com.testdb.data.GeTbTiposContato">
+            <column name="SICLIHCTIPOID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

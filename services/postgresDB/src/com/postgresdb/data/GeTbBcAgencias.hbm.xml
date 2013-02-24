@@ -1,0 +1,42 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.postgresdb.data.GeTbBcAgencias" table="ge_tb_bc_agencias" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="geagid" type="integer">
+            <column name="geagid"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geagcod" type="string">
+            <column name="geagcod" length="5" not-null="true"/>
+        </property>
+        <property name="geagdv" type="string">
+            <column name="geagdv" length="1"/>
+        </property>
+        <property name="geagnome" type="string">
+            <column name="geagnome" length="80" not-null="true"/>
+        </property>
+        <property name="geaggerente" type="string">
+            <column name="geaggerente" length="80"/>
+        </property>
+        <property name="geaggeremail" type="string">
+            <column name="geaggeremail" length="100"/>
+        </property>
+        <property name="geaggertelddd" type="string">
+            <column name="geaggertelddd" length="4"/>
+        </property>
+        <property name="geaggertelno" type="string">
+            <column name="geaggertelno" length="4"/>
+        </property>
+        <property name="geagstatus" type="string">
+            <column name="geagstatus" length="1" not-null="true"/>
+        </property>
+        <property name="geaginivig" type="date">
+            <column name="geaginivig" length="13"/>
+        </property>
+        <property name="geagfimvig" type="date">
+            <column name="geagfimvig" length="13"/>
+        </property>
+        <many-to-one name="geTbBancos" class="com.postgresdb.data.GeTbBancos">
+            <column name="geagbancoid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

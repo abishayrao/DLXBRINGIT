@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.testdb.data.GeCaEmpCentrocusto" table="ge_ca_emp_centrocusto" dynamic-insert="false" dynamic-update="false">
+        <id name="geempccuid" type="integer">
+            <column name="GEEMPCCUID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="geempccucodigo" type="string">
+            <column name="GEEMPCCUCODIGO" length="10" not-null="true"/>
+        </property>
+        <property name="geempccunome" type="string">
+            <column name="GEEMPCCUNOME" length="80" not-null="true"/>
+        </property>
+        <property name="geempccunomeabre" type="string">
+            <column name="GEEMPCCUNOMEABRE" length="40"/>
+        </property>
+        <property name="geempccustatus" type="string">
+            <column name="GEEMPCCUSTATUS" length="1" not-null="true"/>
+        </property>
+        <property name="geempccuvigdesde" type="date">
+            <column name="GEEMPCCUVIGDESDE" length="10"/>
+        </property>
+        <property name="geempccuvigate" type="date">
+            <column name="GEEMPCCUVIGATE" length="10"/>
+        </property>
+        <many-to-one name="geCaEmpresas" class="com.testdb.data.GeCaEmpresas">
+            <column name="GEEMPCCUEMPRESAID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
